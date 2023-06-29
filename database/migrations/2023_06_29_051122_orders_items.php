@@ -17,7 +17,13 @@ class OrdersItems extends Migration
         Schema::create('orders_items', function (Blueprint $table){
             $table->id();
             $table->integer('quantity');
-            $table->decimal('cost',10,2)->nullable()->storedAs(DB::raw(('product_price'-'product_discount')*'quantity'));
+            $table->decimal('cost',10,2)->nullable()->storedAs(DB::raw('(product_price-(product_price*product_discount/100))*quantity'));
+            $table->integer('product_id');
+            $table->integer('category_id');
+            $table->integer('order_id');
+            $table->integer('product_title');
+            $table->integer('product_price');
+            $table->integer('product_discount');
 
             $table->foreign('product_id')->references('id')->on('products')->OnDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->nullOnDelete();

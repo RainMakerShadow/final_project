@@ -13,7 +13,7 @@ class Products extends Migration
      */
     public function up()
     {
-        Shema::create('products', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title', 100);
             $table->string('img_title',50);
@@ -22,14 +22,14 @@ class Products extends Migration
             $table->string('img_descr')->nullable();
             $table->string('description', 250)->nullable();
             $table->string('keywords', 50)->nullable();
-            $table->float('price');
+            $table->decimal('price',10,2);
             $table->boolean('sale');
-            $table->float('discount');
+            $table->integer('discount');
             $table->boolean('new');
             $table->boolean('available');
             $table->integer('leftovers')->nullable();
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('products_categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -23,6 +23,7 @@ class Articles extends Migration
            $table->string('keywords', 50)->nullable();
            $table->string('description', 250)->nullable();
            $table->text('content');
+           $table->integer('category_id');
            $table->timestamps();
 
            $table->foreign('category_id')->references('id')->on('articles_category')->onDelete('cascade');

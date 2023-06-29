@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ArticlesImagesTable extends Migration
+class ArticlesImages extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class ArticlesImagesTable extends Migration
     {
         Schema::create('articles_images', function (Blueprint $table){
            $table->id();
+           $table->integer('article_id');
            $table->string('title', 50);
            $table->string('alt', 50)->nullable();
            $table->string('keywords',50)->nullable();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Category extends Migration
+class ProductsCategories extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class Category extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table){
+        Schema::create('products_categories', function (Blueprint $table){
           $table->id();
           $table->string('title', 50);
           $table->string('img_title');
@@ -22,6 +22,7 @@ class Category extends Migration
           $table->string('img_descr')->nullable();
           $table->string('description', 250)->nullable();
           $table->string('keywords', 50)->nullable();
+          $table->integer('menus_id');
           $table->timestamps();
 
           $table->foreign('menus_id')->references('id')->on('menus')->nullOnDelete();
@@ -35,7 +36,7 @@ class Category extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('products_categories');
         Schema::table('category', function (Blueprint $table){
             $table->dropForeign(['category_id']);
         });

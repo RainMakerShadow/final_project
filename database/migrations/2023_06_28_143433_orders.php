@@ -15,14 +15,15 @@ class Orders extends Migration
     {
         Schema::create('orders', function (Blueprint $table){
            $table->id();
+           $table->integer('user_id');
            $table->string('first_name',50);
            $table->string('last_name', 50);
            $table->string('email',50);
-           $table->integer('phone_number',9);
+           $table->decimal('phone_number',9,0);
            $table->string('address',100);
            $table->decimal('amount', 10, 2);
            $table->string('delivery_serv',50);
-           $table->string('comment');
+           $table->text('comment')->nullable();
            $table->timestamps();
 
            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();

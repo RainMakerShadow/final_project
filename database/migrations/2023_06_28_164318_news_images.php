@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class NewsImagesTable extends Migration
+class NewsImages extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class NewsImagesTable extends Migration
     {
         Schema::create('news_images', function (Blueprint $table){
             $table->id();
+            $table->integer('news_id');
             $table->string('title', 50);
             $table->string('alt',50)->nullable();
             $table->string('keywords',50)->nullable();
