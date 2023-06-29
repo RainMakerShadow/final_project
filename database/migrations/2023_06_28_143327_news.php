@@ -24,7 +24,7 @@ class News extends Migration
            $table->string('keywords', 50)->nullable();
            $table->unsignedBigInteger('category_id');
            $table->foreign('category_id')->references('id')->on('news_category')->onDelete('cascsde');
-           $table->text('body');
+           $table->text('content');
            $table->timestamps();
         });
     }

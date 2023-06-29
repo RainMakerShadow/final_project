@@ -13,7 +13,16 @@ class NewsCategories extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('news_categories', function (Blueprint $table){
+            $table->id();
+            $table->string('title');
+            $table->string('img_title', 50)->nullable();
+            $table->string('img_alt', 50)->nullable();
+            $table->string('img_desckr',150)->nullable();
+            $table->binary('img');
+            $table->string('keywords',50)->nullable();
+            $table->string('descriptions')->nullable();
+        });
     }
 
     /**
@@ -23,6 +32,6 @@ class NewsCategories extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('news_categories');
     }
 }
