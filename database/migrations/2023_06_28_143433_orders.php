@@ -23,6 +23,7 @@ class Orders extends Migration
            $table->decimal('amount', 10, 2);
            $table->string('delivery_serv',50);
            $table->string('comment');
+           $table->timestamps();
 
            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
         });

@@ -29,7 +29,7 @@ class Products extends Migration
             $table->boolean('available');
             $table->integer('leftovers')->nullable();
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascsde');
+            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ArticlesCategory extends Migration
+class NewsImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class ArticlesCategory extends Migration
      */
     public function up()
     {
-        Schema::create('articles_categories', function (Blueprint $table){
+        Schema::create('news_images', function (Blueprint $table){
             $table->id();
             $table->string('title', 50);
-            $table->string('img_title', 50);
-            $table->string('img_alt', 50)->nullable();
-            $table->string('img_descr')->nullable();
-            $table->binary('img');
+            $table->string('alt',50)->nullable();
             $table->string('keywords',50)->nullable();
             $table->string('description')->nullable();
+            $table->binary('img');
             $table->timestamps();
 
-            $table->foreign('menus_id')->references('id')->on('menus')->nullOnDelete();
+            $table->foreign('news_id')->references('id')->on('news_id')->onDelete('cascade');
         });
     }
 
@@ -35,6 +33,6 @@ class ArticlesCategory extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles_categories');
+        Schema::dropIfExists('news_images');
     }
 }

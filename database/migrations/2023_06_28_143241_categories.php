@@ -13,7 +13,7 @@ class Category extends Migration
      */
     public function up()
     {
-        Schema::create('category', function (Blueprint $table){
+        Schema::create('categories', function (Blueprint $table){
           $table->id();
           $table->string('title', 50);
           $table->string('img_title');
@@ -23,6 +23,8 @@ class Category extends Migration
           $table->string('description', 250)->nullable();
           $table->string('keywords', 50)->nullable();
           $table->timestamps();
+
+          $table->foreign('menus_id')->references('id')->on('menus')->nullOnDelete();
         });
     }
 
@@ -33,7 +35,7 @@ class Category extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category');
+        Schema::dropIfExists('categories');
         Schema::table('category', function (Blueprint $table){
             $table->dropForeign(['category_id']);
         });

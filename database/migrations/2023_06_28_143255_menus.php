@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class NewsImagesTable extends Migration
+class Menu extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,13 @@ class NewsImagesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('menus', function (Blueprint $table){
+            $table->id();
+            $table->string('title', 20);
+            $table->string('link', 100);
+
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class NewsImagesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('menus');
     }
 }

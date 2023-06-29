@@ -22,6 +22,9 @@ class NewsCategories extends Migration
             $table->binary('img');
             $table->string('keywords',50)->nullable();
             $table->string('descriptions')->nullable();
+            $table->timestamps();
+
+            $table->foreign('menus_id')->references('id')->on('menus')->nullOnDelete();
         });
     }
 

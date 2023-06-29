@@ -24,6 +24,8 @@ class Articles extends Migration
            $table->string('description', 250)->nullable();
            $table->text('content');
            $table->timestamps();
+
+           $table->foreign('category_id')->references('id')->on('articles_category')->onDelete('cascade');
         });
     }
 

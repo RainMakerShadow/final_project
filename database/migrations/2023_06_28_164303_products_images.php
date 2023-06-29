@@ -20,7 +20,9 @@ class ProductsImagesTable extends Migration
             $table->string('description', 250)->nullable();
             $table->binary('img');
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascsde');
+            $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 
