@@ -23,6 +23,7 @@ class NewsCategories extends Migration
             $table->string('keywords',50)->nullable();
             $table->string('descriptions')->nullable();
             $table->integer('menus_id');
+            $table->string('link',50);
             $table->timestamps();
 
             $table->foreign('menus_id')->references('id')->on('menus')->nullOnDelete();
