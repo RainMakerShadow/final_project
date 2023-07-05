@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
@@ -26,14 +27,22 @@ class AddUser extends Component
         $this->validate();
         /*dd($this->selected);*/
 
-        User::create([
-            'name' => $this->name,
+        $user=User::create();
+        $user->name=$this->name;
+        $user->email=$this->email;
+        $user->password=$this->Hash::make($this->password);
+        $user->role=$this->selected;
+        $user->created_at=Carbon::now();
+        $user->updated_at=Carbon::now();
+        $user->save();
+/*        User::create([
+            'name' =>
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'role'=> $this->selected,
-        ]);
+        ]);*/
 /*        $user->role=$this->selected;
-        $user->save();*/
+        ;*/
         return redirect()->route('user.show');
     }
 
