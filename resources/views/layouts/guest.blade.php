@@ -12,11 +12,13 @@
 
         <!-- Scripts -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        @livewireStyles
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
+        @livewireScripts
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
     </body>

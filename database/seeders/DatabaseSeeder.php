@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'nechay2112@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('21121985'), // password
+            'role' => 4,
         ]);
 
         Role::create([

@@ -28,5 +28,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('/users-show', \App\Http\Livewire\ShowUsers::class)->name('user.show');
+    Route::get('/users/{id}/edit', \App\Http\Livewire\EditUser::class,)->name('user.edit');
+    Route::get('/users/add', \App\Http\Livewire\AddUser::class,)->name('user.add');
 
 });

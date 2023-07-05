@@ -10,6 +10,7 @@ use App\Models\NewsCategory;
 
 class Menu extends Component
 {
+
     public function render()
     {
         $menu=MenuModel::all();
