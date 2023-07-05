@@ -3132,7 +3132,7 @@ var module_default = src_default;
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
-var toggler = document.getElementById("toggler");
+var toggler = document.getElementById("mega-menu-dropdown-button");
 var mNav = document.getElementById("mobile__nav");
 var close = document.getElementById("toggler__expanded");
 toggler.addEventListener("click", function () {

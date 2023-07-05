@@ -13,9 +13,9 @@ class Menu extends Component
     public function render()
     {
         $menu=MenuModel::all();
-        $articleCategories=ArticleCategory::all();
+        $articlesCategories=ArticleCategory::all();
         $newsCategories = NewsCategory::all();
         $productsCategories = ProductsCategories::all();
-        return view('livewire.menu', compact('menu', 'newsCategories', 'articleCategories', 'productsCategories'));
+        return view('livewire.menu', compact('menu', 'newsCategories', 'articlesCategories', 'productsCategories'));
     }
 }
