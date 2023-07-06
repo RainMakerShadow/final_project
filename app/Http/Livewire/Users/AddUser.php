@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Users;
 
 use App\Models\User;
 use Carbon\Carbon;
@@ -25,24 +25,24 @@ class AddUser extends Component
     {
 
         $this->validate();
-        /*dd($this->selected);*/
-
-        $user=User::create();
-        $user->name=$this->name;
-        $user->email=$this->email;
-        $user->password=$this->Hash::make($this->password);
-        $user->role=$this->selected;
-        $user->created_at=Carbon::now();
-        $user->updated_at=Carbon::now();
-        $user->save();
-/*        User::create([
-            'name' =>
+        User::create([
+            'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'role'=> $this->selected,
-        ]);*/
-/*        $user->role=$this->selected;
-        ;*/
+        ]);
+/*
+        $user=User::find($this->userId);
+        $user->update([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => ($this->password===$this->password_valid)?$this->password_valid: Hash::make($this->password),
+        ]);
+        $user->role=$this->selected;
+        $user->save();
+        $user->save()
+        $user->role=$this->selected;*/
+
         return redirect()->route('user.show');
     }
 

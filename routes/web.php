@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Users;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/users-show', \App\Http\Livewire\ShowUsers::class)->name('user.show');
-    Route::get('/users/{id}/edit', \App\Http\Livewire\EditUser::class,)->name('user.edit');
-    Route::get('/users/add', \App\Http\Livewire\AddUser::class,)->name('user.add');
+    Route::get('/users-show', Users\ShowUsers::class)->name('user.show');
+    Route::get('/users/{id}/edit', Users\EditUser::class)->name('user.edit');
+    Route::get('/users/add', Users\AddUser::class)->name('user.add');
+    Route::get('/users/delete{toDelete}', Users\DeleteUser::class)->name('user.delete');
 
 });

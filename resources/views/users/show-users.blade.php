@@ -17,12 +17,9 @@
                     <li>
                         <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Promote</a>
                     </li>
-                    <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Activate account</a>
-                    </li>
                 </ul>
                 <div class="py-1">
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete User</a>
+                    <a href="{{route('user.delete', [implode(',', $toDelete)])}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Видалити користувача</a>
                 </div>
             </div>
         </div>
@@ -62,7 +59,7 @@
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
                     <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {{$checkedAll}}>
+                        <input wire:click='check($event.target.dataset.id, $event.target.checked)' data-id="{{$user->id}}" id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {{$checkedAll}}>
                         <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                     </div>
                 </td>
@@ -74,7 +71,12 @@
                     </div>
                 </th>
                 <td class="px-6 py-4">
-                    {{$user->role}}
+                    @foreach($roles as $role)
+                        @if($role->id===$user->role)
+                            {{$role->name}}
+                        @break
+                        @endif
+                    @endforeach
                 </td>
                 <td class="px-6 py-4">
                     <a href="{{route('user.edit',['id'=>$user->id])}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редагувати</a>
