@@ -10,7 +10,14 @@ class ShowUsers extends Component
 {
     public $checkedAll='';
     public $toDelete=[];
+    public $search;
+    public $roles;
+    public $users;
 
+    public function mount(){
+        $this->users = User::all();
+        $this->roles = Role::all();
+    }
     public function check($id, $checked){ //обработка действий по клику выбора пользователя и формируется массив ID пользователей для удаления
 
         if($checked==true){
@@ -20,6 +27,13 @@ class ShowUsers extends Component
             $key = array_search($id, $this->toDelete);
                 unset($this->toDelete[$key]);
         }
+    }
+    public function handleInput(){
+        $name=$this->search;
+
+        $this->users = User::query()->select()->where('name', 'LIKE', "%{$name}%")->get();
+
+        $this->render();
     }
 
     //Нужно обработать формирование массива для удаления всех пользователей
@@ -35,8 +49,8 @@ class ShowUsers extends Component
     }
     public function render()
     {
-    $users = User::all();
-    $roles = Role::all();
+    $users = $this->users;
+    $roles = $this->roles;
         return view('users.show-users', compact('users', 'roles'));
     }
 }
