@@ -14,9 +14,6 @@
                     <li>
                         <a href="{{route('user.add')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Додати</a>
                     </li>
-                    <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Promote</a>
-                    </li>
                 </ul>
                 <div class="py-1">
                     <a href="{{route('user.delete', [implode(',', $toDelete)])}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Видалити користувача</a>

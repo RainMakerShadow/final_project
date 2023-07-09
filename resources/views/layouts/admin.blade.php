@@ -19,7 +19,7 @@
     <body class="">
 
     @livewire('admin-navigation-menu')
-        <div class="p-0 sm:ml-64">
+        <div class="p-0 xl:ml-64">
             <div class="p-5 bg-white dark:bg-gray-900 antialiased">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-14">
                 <main>

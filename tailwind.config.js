@@ -9,13 +9,30 @@ module.exports = {
         './resources/views/**/*.blade.php',
     ],
 
-    theme: {
+/*    theme: {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
         },
+    },*/
+    theme: {
+
+        fontFamily: {
+            sans: ['Graphik', 'sans-serif'],
+            serif: ['Merriweather', 'serif'],
+        },
+        extend: {
+            spacing: {
+                '128': '32rem',
+                '144': '36rem',
+            },
+            borderRadius: {
+                '4xl': '2rem',
+            }
+        }
     },
+    darkMode: 'media',
 
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
