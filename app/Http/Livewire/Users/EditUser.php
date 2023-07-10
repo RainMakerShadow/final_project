@@ -30,7 +30,6 @@ class EditUser extends Component
     {
 
         $this->validate();
-        /*dd($this->selected);*/
 
         $user=User::find($this->userId);
         $user->update([
