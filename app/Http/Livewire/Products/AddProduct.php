@@ -75,7 +75,7 @@ class AddProduct extends Component
             'image' => 'required|file|max:4096',
         ]);
 
-        $this->image->storeAs('./img/products', $this->transliteratedTitle.'.'.$this->image->getClientOriginalExtension()); // Путь, где будет сохранен файл
+        $this->image->storeAs('public/image/products', $this->img_file_name.'.'.$this->image->getClientOriginalExtension()); // Путь, где будет сохранен файл
 
 
     }
