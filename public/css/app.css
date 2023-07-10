@@ -2617,6 +2617,12 @@ html{
   background-color: rgb(17 24 39);
 }
 
+@media (min-width: 768px) {
+  .md\:visible {
+    display: block;
+  }
+}
+
 .after\:absolute::after {
   content: var(--tw-content);
   position: absolute;
@@ -3496,8 +3502,12 @@ html{
     margin-bottom: 2rem;
   }
 
-  .lg\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .lg\:table-cell {
+    display: table-cell;
+  }
+
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .lg\:px-5 {
@@ -3505,9 +3515,24 @@ html{
     padding-right: 1.25rem;
   }
 
+  .lg\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .lg\:py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
   .lg\:pl-3 {
@@ -3518,6 +3543,10 @@ html{
 @media (min-width: 1280px) {
   .xl\:ml-64 {
     margin-left: 16rem;
+  }
+
+  .xl\:table-cell {
+    display: table-cell;
   }
 
   .xl\:hidden {

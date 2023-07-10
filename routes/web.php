@@ -36,4 +36,5 @@ Route::middleware([
     Route::get('/products', Products\ShowProducts::class)->name('products.show');
     Route::get('/product/{id}/edit', Products\EditProduct::class)->name('product.edit');
     Route::get('/product/add', Products\AddProduct::class)->name('product.add');
+    Route::get('/products/delete{toDelete}', Products\DeleteProducts::class)->name('products.delete');
 });

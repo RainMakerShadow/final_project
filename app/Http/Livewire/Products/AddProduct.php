@@ -23,6 +23,7 @@ class AddProduct extends Component
     public $new=false;
     public $transliteratedTitle;
     public $leftovers;
+    public $img_file_name;
 
     public $img_title;
     public $img_descr;
@@ -73,7 +74,10 @@ class AddProduct extends Component
         $this->validate([
             'image' => 'required|file|max:4096',
         ]);
-        $this->image->storeAs('public/image/products/', $this->transliteratedTitle.'.'.$this->image->getClientOriginalExtension()); // Путь, где будет сохранен файл
+
+        $this->image->storeAs('./img/products', $this->transliteratedTitle.'.'.$this->image->getClientOriginalExtension()); // Путь, где будет сохранен файл
+
+
     }
 
 
@@ -93,23 +97,21 @@ class AddProduct extends Component
         );
 
         $this->transliteratedTitle = strtr($this->title, $converter);
+        $this->img_file_name = preg_replace('/\s+/', '-', $this->transliteratedTitle); // замена пробелов на дефисы
+        $this->img_file_name = preg_replace('/[^a-zA-Z0-9\-]/', '', $this->img_file_name); // удаление всех символов, кроме латиницы, цифр и дефисов
+        $this->img_file_name = strtolower($this->img_file_name);
     }
-
-/*    public function selected(){
-        $this->selected=$id;
-        dd($id);
-    }*/
 
     public function submit(){ //Добавление товара
        $this->validate();
-       $this->upLoadImage();
        $this->transliterate();
+       $this->upLoadImage();
        Product::create([
           'title' => $this->title,
-          'img_title' => (!$this->img_title) ? $this->transliteratedTitle : $this->img_title,
-          'img' => $this->transliteratedTitle.'.'.$this->image->getClientOriginalExtension(),
-          'img_alt'=> (!$this->img_alt) ? $this->transliteratedTitle : $this->img_alt,
-           'img_descr' => (!$this->img_descr) ? $this->transliteratedTitle : $this->img_descr,
+          'img_title' => (!$this->img_title) ? $this->title : $this->img_title,
+          'img' => $this->img_file_name.'.'.$this->image->getClientOriginalExtension(),
+          'img_alt'=> (!$this->img_alt) ? $this->title : $this->img_alt,
+           'img_descr' => (!$this->img_descr) ? $this->title : $this->img_descr,
            'description' => $this->description,
            'keywords' => $this->keywords,
            'price' => $this->price,

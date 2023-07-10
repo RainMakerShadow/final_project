@@ -5,3 +5,11 @@
 html{
     background-color: rgb(17 24 39);
 }
+
+
+@media (min-width: 768px) {
+
+    .md\:visible {
+        display: block;
+    }
+}

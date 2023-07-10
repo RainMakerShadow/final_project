@@ -14,15 +14,30 @@ class ShowProducts extends Component
     public $toDelete=[];
     public $search;
 
+    public $order='asc';
+
     public function mount(){
         $this->products=Product::all();
         $this->categories=ProductsCategories::all();
     }
+    public function sort ($order){ //сортировка колонок таблицы
 
-    public function handleInput(){
+
+        if($this->order==='asc') {
+            $this->products = Product::query()->orderBy($order, $this->order)->get();
+            $this->order='desc';
+        }
+        elseif($this->order==="desc"){
+            $this->products = Product::query()->orderByDesc($order)->get();
+            $this->order='asc';
+        }
+
+        $this->render();
+    }
+    public function handleInput(){ //поиск
         $name=$this->search;
 
-        $this->products = Product::query()->select()->where('name', 'LIKE', "%{$name}%")->get();
+        $this->products = Product::query()->select()->where('title', 'LIKE', "%{$name}%")->get();
 
         $this->render();
     }
@@ -36,7 +51,6 @@ class ShowProducts extends Component
             unset($this->toDelete[$key]);
         }
     }
-    //Нужно обработать формирование массива для удаления всех пользователей
 
     public function checked(){ // Обработка события выделения всех пользователей
         if ($this->checkedAll===''){
