@@ -50,7 +50,7 @@ Route::middleware([
 
 //      categories routs
     Route::get('/products/categories', ProductsCategories\ShowProductsCategories::class)->name('products-categories.show');
-    Route::get('/products/category/{id}/edit', ProductsCategories\EditProductsCategories::class)->name('product-category.edit');
+    Route::get('/product/category/{id}/edit', ProductsCategories\EditProductsCategories::class)->name('product-category.edit');
     Route::get('/product/category/add', ProductsCategories\AddProductsCategories::class)->name('product-category.add');
     Route::get('/products/categories/delete{toDelete}', ProductsCategories\DeleteProductsCategories::class)->name('products-categories.delete');
 
