@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Users;
 use App\Http\Livewire\Products;
 use App\Http\Livewire\ProductsCategories;
+use App\Http\Livewire\News;
+use App\Http\Livewire\NewsCategories;
+use App\Http\Livewire\Articles;
+use App\Http\Livewire\ArticlesCategories;
+use App\Http\Livewire\Menu;
+use App\Http\Livewire\Gallery;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,38 +55,38 @@ Route::middleware([
     Route::get('/products/categories/delete{toDelete}', ProductsCategories\DeleteProductsCategories::class)->name('products-categories.delete');
 
 //      news routs
-    Route::get('/products/categories', ProductsCategories\ShowProductsCategories::class)->name('news.show');
-    Route::get('/products/category/{id}/edit', ProductsCategories\EditProductsCategories::class)->name('news.edit');
-    Route::get('/product/category/add', ProductsCategories\AddProductsCategories::class)->name('news.add');
-    Route::get('/products/categories/delete{toDelete}', ProductsCategories\DeleteProductsCategories::class)->name('news.delete');
+    Route::get('/news', News\ShowNews::class)->name('news.show');
+    Route::get('/news/{id}/edit', News\EditNews::class)->name('news.edit');
+    Route::get('/news/add', News\AddNews::class)->name('news.add');
+    Route::get('/news/delete{toDelete}', News\DeleteNews::class)->name('news.delete');
 
 //      news categories routs
-    Route::get('/products/categories', ProductsCategories\ShowProductsCategories::class)->name('news-categories.show');
-    Route::get('/products/category/{id}/edit', ProductsCategories\EditProductsCategories::class)->name('news-category.edit');
-    Route::get('/product/category/add', ProductsCategories\AddProductsCategories::class)->name('news-category.add');
-    Route::get('/products/categories/delete{toDelete}', ProductsCategories\DeleteProductsCategories::class)->name('news-categories.delete');
+    Route::get('/news/categories', NewsCategories\ShowNewsCategories::class)->name('news-categories.show');
+    Route::get('/news/category/{id}/edit', NewsCategories\EditNewsCategories::class)->name('news-category.edit');
+    Route::get('/news/category/add', NewsCategories\AddNewsCategories::class)->name('news-category.add');
+    Route::get('/news/categories/delete{toDelete}', NewsCategories\DeleteNewsCategories::class)->name('news-categories.delete');
 
 //      articles routs
-    Route::get('/products/categories', ProductsCategories\ShowProductsCategories::class)->name('articles.show');
-    Route::get('/products/category/{id}/edit', ProductsCategories\EditProductsCategories::class)->name('articles.edit');
-    Route::get('/product/category/add', ProductsCategories\AddProductsCategories::class)->name('articles.add');
-    Route::get('/products/categories/delete{toDelete}', ProductsCategories\DeleteProductsCategories::class)->name('articles.delete');
+    Route::get('/articles', Articles\ShowArticles::class)->name('articles.show');
+    Route::get('/articles/{id}/edit', Articles\EditArticles::class)->name('articles.edit');
+    Route::get('/articles/add', Articles\AddArticles::class)->name('articles.add');
+    Route::get('/articles/delete{toDelete}', Articles\DeleteArticles::class)->name('articles.delete');
 
 //      articles categories routs
-    Route::get('/products/categories', ProductsCategories\ShowProductsCategories::class)->name('articles-categories.show');
-    Route::get('/products/category/{id}/edit', ProductsCategories\EditProductsCategories::class)->name('articles-category.edit');
-    Route::get('/product/category/add', ProductsCategories\AddProductsCategories::class)->name('articles-category.add');
-    Route::get('/products/categories/delete{toDelete}', ProductsCategories\DeleteProductsCategories::class)->name('articles-categories.delete');
+    Route::get('/articles/categories', ArticlesCategories\ShowArticlesCategories::class)->name('articles-categories.show');
+    Route::get('/articles/category/{id}/edit', ArticlesCategories\EditArticlesCategories::class)->name('articles-category.edit');
+    Route::get('/articles/category/add', ArticlesCategories\AddArticlesCategories::class)->name('articles-category.add');
+    Route::get('/articles/categories/delete{toDelete}', ArticlesCategories\DeleteArticlesCategories::class)->name('articles-categories.delete');
 
 //      menu edit routs
-    Route::get('/products/categories', ProductsCategories\ShowProductsCategories::class)->name('menu.show');
-    Route::get('/products/category/{id}/edit', ProductsCategories\EditProductsCategories::class)->name('menu.edit');
-    Route::get('/product/category/add', ProductsCategories\AddProductsCategories::class)->name('menu.add');
-    Route::get('/products/categories/delete{toDelete}', ProductsCategories\DeleteProductsCategories::class)->name('menu.delete');
+    Route::get('/menu', Menu\ShowMenu::class)->name('menu.show');
+    Route::get('/menu/{id}/edit', Menu\EditMunu::class)->name('menu.edit');
+    Route::get('/menu/add', Menu\AddMenu::class)->name('menu.add');
+    Route::get('/menu/delete{toDelete}', Menu\DeleteMenu::class)->name('menu.delete');
 
 //      gallery routs
-    Route::get('/products/categories', ProductsCategories\ShowProductsCategories::class)->name('gallery.show');
-    Route::get('/products/category/{id}/edit', ProductsCategories\EditProductsCategories::class)->name('gallery.edit');
-    Route::get('/product/category/add', ProductsCategories\AddProductsCategories::class)->name('gallery.add');
-    Route::get('/products/categories/delete{toDelete}', ProductsCategories\DeleteProductsCategories::class)->name('gallery.delete');
+    Route::get('/gallery', Gallery\ShowGallery::class)->name('gallery.show');
+    Route::get('/gallery/{id}/edit', Gallery\EditGallery::class)->name('gallery.edit');
+    Route::get('/gallery/add', Gallery\AddGallery::class)->name('gallery.add');
+    Route::get('/gallery/delete{toDelete}', Gallery\DeleteGallery::class)->name('gallery.delete');
 });
