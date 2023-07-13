@@ -56,7 +56,7 @@ class EditProductsCategories extends Component
 
     public function upLoadImage() //Сохранение файла на сервер
     {
-        $this->image->storeAs('public/image/products', $this->img_file_name.'.'.$this->image->getClientOriginalExtension()); // Путь, где будет сохранен файл
+        $this->image->storeAs('public/image/products-categories', $this->img_file_name.'.'.$this->image->getClientOriginalExtension()); // Путь, где будет сохранен файл
     }
 
     public function handleInputTitle(){
@@ -65,6 +65,9 @@ class EditProductsCategories extends Component
         $this->link='/'.strtolower($this->transLiterate['file_name']);
     }
 
+    public function handleSelectMenu($elem){
+        $this->selected=$elem;
+    }
     public function submit()
     {
 
@@ -86,7 +89,7 @@ class EditProductsCategories extends Component
             'img_descr' => (!$this->img_descr)?$this->img_title:$this->img_descr,
             'description' => $this->description,
             'keywords' => $this->keywords,
-            'link' => '/'.$transLiterate['transliteratedTitle']
+            'link' => $this->link
 
         ]);
         $category->menus_id=($this->menu_id==$this->selected)?$this->menu_id:$this->selected;

@@ -2,13 +2,20 @@
 
 namespace App\Http\Livewire\Users;
 
+use App\Actions\MyActions\Transliterate;
+use App\Actions\MyActions\UpLoadImage;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Spatie\Permission\Models\Role;
 
 class EditUser extends Component
 {
+
+    use WithFileUploads;
+
     public $userId;
     public $name;
     public $email;
@@ -18,6 +25,8 @@ class EditUser extends Component
     public $selected;
     public $user;
     public $roles;
+    public $image;
+    public $imageUrl;
 
 
     protected $rules = [
@@ -26,16 +35,24 @@ class EditUser extends Component
         'password' => 'required|min:8',
     ];
 
+
     public function submit()
     {
 
         $this->validate();
-
+        $transLiterate= (new Transliterate)->transLiterate($this->name);
+        if(is_object($this->image)){
+            $this->validate([
+                'image' => 'required|file|max:4096',
+            ]);
+            (new UpLoadImage)->UpLoadImage('public/image/users', $transLiterate['file_name'], $this->image);
+        }
         $user=User::find($this->userId);
         $user->update([
             'name' => $this->name,
             'email' => $this->email,
             'password' => ($this->password===$this->password_valid)?$this->password_valid: Hash::make($this->password),
+            'profile_photo_path' => (is_object($this->image))?$transLiterate['file_name'].'.'.$this->image->getClientOriginalExtension():$user->profile_photo_path,
         ]);
         $user->role=$this->selected;
         $user->save();
@@ -51,6 +68,7 @@ class EditUser extends Component
         $this->password_valid=$this->user->password;
         $this->email=$this->user->email;
         $this->selected=$this->user->role;
+        $this->imageUrl=Storage::url('image/users/'.$this->user->profile_photo_path);
 
         $this->roles = Role::all();
     }

@@ -18,10 +18,10 @@ class NewsCategories extends Migration
             $table->string('title');
             $table->string('img_title', 50)->nullable();
             $table->string('img_alt', 50)->nullable();
-            $table->string('img_desckr',150)->nullable();
+            $table->string('img_descr',150)->nullable();
             $table->binary('img');
             $table->string('keywords',50)->nullable();
-            $table->string('descriptions')->nullable();
+            $table->string('description')->nullable();
             $table->integer('menus_id');
             $table->string('link',50);
             $table->timestamps();

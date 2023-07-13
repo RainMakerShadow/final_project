@@ -62,7 +62,7 @@
                     </div>
                 </td>
                 <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                    <img class="w-10 h-10 rounded-full" src="{{asset('/img/users/'.$user->id.'.svg')}}" alt="User image">
+                    <img class="w-10 h-10 rounded-full" src="{{ Illuminate\Support\Facades\Storage::url('image/users/'.$user->profile_photo_path) }}" alt="User image">
                     <div class="pl-3">
                         <div class="text-base font-semibold">{{$user->name}}</div>
                         <div class="font-normal text-gray-500">{{$user->email}}</div>

@@ -34,7 +34,7 @@
 
                 <select wire:model="selected" id="selected" name="selected" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     @foreach($menu as $menu_item)
-                        <option value="{{$menu_item->id}}" @if($menu_itemy->id===$product_category->menus_id) selected @endif>{{$menu->title}}</option>
+                        <option value="{{$menu_item->id}}" >{{$menu->title}}</option>
                     @endforeach
                 </select>
                 {{--                    --}}

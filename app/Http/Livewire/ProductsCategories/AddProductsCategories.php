@@ -22,7 +22,6 @@ class AddProductsCategories extends Component
     public $img_descr;
     public $description;
     public $keywords;
-    public $menu_id=3;
     public $link;
     public $menu;
     public $selected = 1;
@@ -55,11 +54,9 @@ class AddProductsCategories extends Component
             'description' => $this->description,
             'keywords' => $this->keywords,
             'menus_id' => $this->selected,
-            'link' => '/'.$this->transLiterate['transliteratedTitle'],
+            'link' => $this->link,
 
         ]);
-/*        $category->menus_id=3;
-        $category->save();*/
         return redirect()->route('products-categories.show');
     }
     public function render()

@@ -139,7 +139,7 @@
                 </td>
                 <td class="px-6 py-4 hidden lg:table-cell lg:px-6 lg:py-4">
                     @foreach($menu as $menu_item)
-                        @if($menu_item==$product_category->menus_id)
+                        @if($menu_item->id==$product_category->menus_id)
                             {{$menu_item->title}}
                         @endif
                     @endforeach
