@@ -1,4 +1,5 @@
 <div>
+    <h1 class="mb-4  font-extrabold text-gray-500 dark:text-white md:text-2xl lg:text-3xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Додавання нового товару</span> </h1>
     <form wire:submit.prevent="submit" enctype="multipart/form-data">
         <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
@@ -74,7 +75,7 @@
 
             <div class="max-w-lg">
                 @if ($image)
-                <img class="h-auto max-w-xl rounded-lg shadow-xl dark:shadow-gray-800 mt-4 ml-20" src="{{ $image->temporaryUrl() }}" alt="image description" width="50%">
+                <img class="h-auto max-w-xl rounded-lg shadow-xl dark:shadow-gray-800 mt-4 ml-20" src="{{ $image->temporaryUrl() }}" alt="" width="50%">
                 @endif
             </div>
         </div>

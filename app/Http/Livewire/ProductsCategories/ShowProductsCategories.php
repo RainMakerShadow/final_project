@@ -10,7 +10,7 @@ use App\Models\ProductsCategories;
 class ShowProductsCategories extends Component
 {
 
-    public $title;
+/*    public $title;
     public $img_title;
     public $img;
     public $img_alt;
@@ -18,7 +18,7 @@ class ShowProductsCategories extends Component
     public $description;
     public $keywords;
     public $menu_id;
-    public $link;
+    public $link;*/
 
     public $search;
     public $checkedAll='';
@@ -26,13 +26,27 @@ class ShowProductsCategories extends Component
     public $imageUrl;
     public $products_categories;
     public $menu;
-
+    public $order='asc';
 
     public function mount(){
         $this->imageUrl=Storage::url('image/products/vinograd-oskar.webp');
-
         $this->products_categories=ProductsCategories::all();
         $this->menu=Menu::all();
+    }
+
+    public function sort ($order){ //сортировка колонок таблицы
+
+
+        if($this->order==='asc') {
+            $this->products_categories = ProductsCategories::query()->orderBy($order, $this->order)->get();
+            $this->order='desc';
+        }
+        elseif($this->order==="desc"){
+            $this->products_categories = ProductsCategories::query()->orderByDesc($order)->get();
+            $this->order='asc';
+        }
+
+        $this->render();
     }
 
     public function check($id, $checked){ //обработка действий по клику выбора иформирование массива ID для удаления
@@ -55,7 +69,6 @@ class ShowProductsCategories extends Component
         }
 
     }
-
     public function handleInput(){
         $title=$this->search;
 

@@ -2,12 +2,69 @@
 
 namespace App\Http\Livewire\ProductsCategories;
 
+use App\Actions\MyActions\Transliterate;
+use App\Actions\MyActions\UpLoadImage;
+use App\Models\Menu;
+use App\Models\ProductsCategories;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class AddProductsCategories extends Component
 {
+    use WithFileUploads;
+
+    public $product_category;
+    public $title;
+    public $image;
+    public $imageUrl;
+    public $img_title;
+    public $img_alt;
+    public $img_descr;
+    public $description;
+    public $keywords;
+    public $menu_id=3;
+    public $link;
+    public $menu;
+    public $selected = 1;
+    public $transLiterate;
+
+    protected $rules = [
+        'title' => 'required',
+    ];
+
+    public function mount(){
+        $this->menu=Menu::all();
+    }
+    public function handleInputTitle(){
+
+        $this->transLiterate= (new Transliterate)->transLiterate($this->title);
+        $this->link='/'.strtolower($this->transLiterate['file_name']);
+
+    }
+
+    public function submit(){ //Добавление
+
+        $this->validate();
+        (new UpLoadImage)->upLoadImage('public/image/products-categories', $this->transLiterate['file_name'], $this->image);
+        ProductsCategories::create([
+            'title' => $this->title,
+            'img_title' => $this->img_title,
+            'img' => $this->transLiterate['file_name'].'.'.$this->image->getClientOriginalExtension(),
+            'img_alt' => $this->img_title,
+            'img_descr' => $this->img_descr,
+            'description' => $this->description,
+            'keywords' => $this->keywords,
+            'menus_id' => $this->selected,
+            'link' => '/'.$this->transLiterate['transliteratedTitle'],
+
+        ]);
+/*        $category->menus_id=3;
+        $category->save();*/
+        return redirect()->route('products-categories.show');
+    }
     public function render()
     {
-        return view('products-categories.add-products-categories');
+        $menu=$this->menu;
+        return view('products-categories.add-products-categories', compact('menu'));
     }
 }

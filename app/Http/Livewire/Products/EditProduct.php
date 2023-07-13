@@ -138,7 +138,6 @@ class EditProduct extends Component
         $this->title=$this->product->title;
         $this->img_title=$this->product->img_title;
         $this->imageUrl=Storage::url('image/products/'.$this->product->img);
-        //dd($this->image);
         $this->img_alt=$this->product->img_alt;
         $this->img_descr=$this->product->img_descr;
         $this->description=$this->product->description;

@@ -1,4 +1,5 @@
 <div>
+    <h1 class="mb-4  font-extrabold text-gray-500 dark:text-white md:text-2xl lg:text-3xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Редагування товару</span> </h1>
     <form wire:submit.prevent="submit" enctype="multipart/form-data">
         <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
@@ -58,7 +59,7 @@
         <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
                 <div class="mb-5">
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Додати зображення</label>
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Обрати зображення</label>
                     <input wire:model='image' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="file_input" type="file">
                 </div>
                 <div class="mb-5">

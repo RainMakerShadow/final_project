@@ -32,7 +32,7 @@ module.exports = {
             }
         }
     },
-    darkMode: 'media',
+    /*darkMode: 'media',*/
 
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
