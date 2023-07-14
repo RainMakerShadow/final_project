@@ -23,6 +23,9 @@ class EditMenu extends Component
 
         $this->menu = Menu::find($id);
         $this->menu_id=$id;
+        $this->title=$this->menu->title;
+        $this->link=$this->menu->link;
+
     }
 
     protected $rules = [
@@ -33,6 +36,10 @@ class EditMenu extends Component
 
         $this->transLiterate= (new Transliterate)->transLiterate($this->title);
         $this->link='/'.strtolower($this->transLiterate['file_name']);
+    }
+
+    public function handleBottomBack(){
+        return redirect()->route('menu.show');
     }
 
     public function submit()
@@ -47,7 +54,6 @@ class EditMenu extends Component
             'link' => $this->link
 
         ]);
-        $menu->menus_id=$this->selected;
         $menu->save();
         return redirect()->route('menu.show');
     }

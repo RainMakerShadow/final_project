@@ -35,10 +35,11 @@ class AddProductsCategories extends Component
         $this->menu=Menu::all();
     }
     public function handleInputTitle(){
-
         $this->transLiterate= (new Transliterate)->transLiterate($this->title);
         $this->link='/'.strtolower($this->transLiterate['file_name']);
-
+    }
+    public function handleBottomBack(){
+        return redirect()->route('products-categories.show');
     }
 
     public function submit(){ //Добавление

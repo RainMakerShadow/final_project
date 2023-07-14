@@ -79,7 +79,7 @@
                             {{$menu_item->link}}
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="{{route('news-category.edit',['id'=>$menu_item->id])}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редагувати</a>
+                            <a href="{{route('menu.edit',['id'=>$menu_item->id])}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редагувати</a>
                         </td>
                     </tr>
 

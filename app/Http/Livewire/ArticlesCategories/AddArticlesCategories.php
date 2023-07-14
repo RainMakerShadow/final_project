@@ -42,6 +42,10 @@ class AddArticlesCategories extends Component
 
     }
 
+    public function handleBottomBack(){
+        return redirect()->route('articles-categories.show');
+    }
+
     public function submit(){ //Добавление
 
         $this->validate();

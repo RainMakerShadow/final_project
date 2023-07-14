@@ -72,6 +72,10 @@ class EditNewsCategories extends Component
         $this->link='/'.strtolower($this->transLiterate['file_name']);
     }
 
+    public function handleBottomBack(){
+        return redirect()->route('news-categories.show');
+    }
+
     public function submit()
     {
 

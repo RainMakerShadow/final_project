@@ -1,7 +1,15 @@
 <div>
+    <div class="p-4">
+        <button wire:click="handleBottomBack" type="button" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+            <svg class="w-3 h-3 ml-1 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="3 0 8 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"/>
+            </svg>
+            <span class="sr-only">Icon description</span>
+        </button>
+    </div>
     <div class="p-4 pb-10">
         <h1 class="mb-4  font-extrabold text-gray-500 dark:text-white md:text-2xl lg:text-3xl">Редагування категорії<span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400"> "{{$title}}"</span> </h1>
-        <form wire:submit.prevent="submit" enctype="multipart/form-data" class="shadow-xl">
+        <form wire:submit.prevent="submit" enctype="multipart/form-data">
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
                     <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Назва</label>
@@ -59,15 +67,15 @@
                     </div>
                     <div class="mb-6">
                         <label for="img_descr" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Опис зображення</label>
-                        <input wire:loading.attr="disabled" wire:loading.attr="disabled" wire:model="img_descr" type="text" id="img_descr" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required value="{{$product_category->img_title}}">
+                        <input wire:model="img_descr" type="text" id="img_descr" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required value="{{$product_category->img_title}}">
                         @error('title') <span class="error text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-6">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Обрати зображення</label>
-                        <input wire:model='image' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="file_input" type="file">
+                        <input  wire:loading.attr="disabled" wire:model='image' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="file_input" type="file">
                     </div>
                 </div>
-                <div class="grid justify-items-center">
+                <div class="grid justify-items-center  content-center">
                     @if (is_object($image))
                         <img class="h-auto max-w-xl rounded-lg shadow-lg shadow-gray-700 dark:shadow-cyan-500/50" src= "{{$image->temporaryUrl()}}"  alt="image description" width="50%">
                     @else

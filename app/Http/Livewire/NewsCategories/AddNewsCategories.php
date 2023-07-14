@@ -40,6 +40,10 @@ class AddNewsCategories extends Component
 
     }
 
+    public function handleBottomBack(){
+        return redirect()->route('news-categories.show');
+    }
+
     public function submit(){ //Добавление
 
         $this->validate();

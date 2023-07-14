@@ -80,6 +80,10 @@ class AddProduct extends Component
 
     }
 
+    public function handleBottomBack(){
+        return redirect()->route('products.show');
+    }
+
 
     public function transliterate() //Транслитерация title для названия изображения, img_alt, img_descr
     {

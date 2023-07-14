@@ -72,6 +72,10 @@ class EditArticlesCategories extends Component
         $this->link='/'.strtolower($this->transLiterate['file_name']);
     }
 
+    public function handleBottomBack(){
+        return redirect()->route('articles-categories.show');
+    }
+
     public function submit()
     {
 
