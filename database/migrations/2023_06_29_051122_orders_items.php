@@ -16,6 +16,7 @@ class OrdersItems extends Migration
     {
         Schema::create('orders_items', function (Blueprint $table){
             $table->id();
+            $table->string('user_id');
             $table->integer('quantity');
             $table->decimal('cost',10,2)->nullable()->storedAs(DB::raw('(product_price-(product_price*product_discount/100))*quantity'));
             $table->integer('product_id');

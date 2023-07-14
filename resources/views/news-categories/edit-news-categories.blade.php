@@ -9,7 +9,7 @@
             </div>
             <div>
                 <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Опис категорії</label>
-                <input wire:model="description" type="text" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required value="{{$news_category->description}}">
+                <input wire:model="description" type="text" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" value="{{$news_category->description}}">
                 @error('title') <span class="error text-red-500">{{ $message }}</span> @enderror
             </div>
 
@@ -22,7 +22,7 @@
             </div>
             <div>
                 <label for="keywords" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ключові слова</label>
-                <input wire:model="keywords" type="text" id="keywords" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required value="{{$news_category->keywords}}">
+                <input wire:model="keywords" type="text" id="keywords" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" value="{{$news_category->keywords}}">
                 @error('title') <span class="error text-red-500">{{ $message }}</span> @enderror
             </div>
         </div>
@@ -33,7 +33,7 @@
 
                 <select wire:model="selected" id="selected" name="selected" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     @foreach($menu as $menu_item)
-                        <option value="{{$menu_item->id}}" @if($menu_item->id===$news_category->menus_id) selected @else @endif>{{$menu->title}}</option>
+                        <option value="{{$menu_item->id}}" @if($menu_item->id===$news_category->menus_id) selected @else @endif>{{$menu_item->title}}</option>
                     @endforeach
                 </select>
                 {{--                    --}}
@@ -53,12 +53,12 @@
                 </div>
                 <div class="mb-6">
                     <label for="img_alt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ALT-атрибут зображення</label>
-                    <input wire:model="img_alt" type="text" id="img_alt" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required value="{{$news_category->img_title}}">
+                    <input wire:model="img_alt" type="text" id="img_alt" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" value="{{$news_category->img_alt}}">
                     @error('title') <span class="error text-red-500">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-6">
                     <label for="img_descr" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Опис зображення</label>
-                    <input wire:model="img_descr" type="text" id="img_descr" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required value="{{$news_category->img_title}}">
+                    <input wire:model="img_descr" type="text" id="img_descr" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" value="{{$news_category->img_descr}}">
                     @error('title') <span class="error text-red-500">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-6">

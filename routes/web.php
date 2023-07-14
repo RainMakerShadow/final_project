@@ -80,7 +80,7 @@ Route::middleware([
 
 //      menu edit routs
     Route::get('/menu', Menu\ShowMenu::class)->name('menu.show');
-    Route::get('/menu/{id}/edit', Menu\EditMunu::class)->name('menu.edit');
+    Route::get('/menu/{id}/edit', Menu\EditMenu::class)->name('menu.edit');
     Route::get('/menu/add', Menu\AddMenu::class)->name('menu.add');
     Route::get('/menu/delete{toDelete}', Menu\DeleteMenu::class)->name('menu.delete');
 

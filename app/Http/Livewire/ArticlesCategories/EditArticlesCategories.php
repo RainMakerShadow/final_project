@@ -91,8 +91,8 @@ class EditArticlesCategories extends Component
             'img' => (is_object($this->image))?$transLiterate['file_name'].'.'.$this->image->getClientOriginalExtension():$articles_categories->img,
             'img_alt' => (!$this->img_alt)?$this->img_title:$this->img_alt,
             'img_descr' => (!$this->img_descr)?$this->img_title:$this->img_descr,
-            'description' => $this->description,
-            'keywords' => $this->keywords,
+            'description' => ($this->description)?:$this->title,
+            'keywords' => ($this->keywords)?:$this->title,
             'link' => $this->link
 
         ]);
@@ -103,8 +103,8 @@ class EditArticlesCategories extends Component
 
     public function render()
     {
-        $articles_categories=$this->articles_categories;
+        $article_category=$this->articles_categories;
         $menu=$this->menu;
-        return view('articles-categories.edit-articles-categories', compact('articles_categories', 'menu'));
+        return view('articles-categories.edit-articles-categories', compact('article_category', 'menu'));
     }
 }
