@@ -48,6 +48,13 @@ class EditNewsCategories extends Component
         $this->link = $this->news_categories->link;
         $this->image = $this->news_categories->img;
         $this->imageUrl=Storage::url('image/news-categories/'.$this->news_categories->img);
+        if(count($this->menu)<$this->menu_id){
+            $this->selected=1;
+        }
+        else{
+            $this->selected=$this->menu_id;
+        }
+
     }
 
     protected $rules = [
@@ -89,7 +96,7 @@ class EditNewsCategories extends Component
             'link' => $this->link
 
         ]);
-        $news_category->menus_id=($this->menu_id==$this->selected)?$this->menu_id:$this->selected;
+        $news_category->menus_id=$this->selected;
         $news_category->save();
         return redirect()->route('news-categories.show');
     }

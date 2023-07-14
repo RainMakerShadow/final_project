@@ -14,7 +14,7 @@ class DeleteNewsCategories extends Component
             $user->delete();
         }
 
-        return redirect()->route('products-categories.show');
+        return redirect()->route('news-categories.show');
 
     }
     public function render()

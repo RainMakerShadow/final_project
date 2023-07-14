@@ -105,11 +105,11 @@ class AddProduct extends Component
     public function submit(){ //Добавление товара
        $this->validate();
        $this->transliterate();
-       $this->upLoadImage();
+       if($this->image) $this->upLoadImage();
        Product::create([
           'title' => $this->title,
           'img_title' => (!$this->img_title) ? $this->title : $this->img_title,
-          'img' => $this->img_file_name.'.'.$this->image->getClientOriginalExtension(),
+          'img' => ($this->image)?$this->img_file_name.'.'.$this->image->getClientOriginalExtension():'',
           'img_alt'=> (!$this->img_alt) ? $this->title : $this->img_alt,
            'img_descr' => (!$this->img_descr) ? $this->title : $this->img_descr,
            'description' => $this->description,

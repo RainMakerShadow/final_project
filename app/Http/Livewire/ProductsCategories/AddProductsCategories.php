@@ -44,11 +44,11 @@ class AddProductsCategories extends Component
     public function submit(){ //Добавление
 
         $this->validate();
-        (new UpLoadImage)->upLoadImage('public/image/products-categories', $this->transLiterate['file_name'], $this->image);
+        if($this->image) (new UpLoadImage)->upLoadImage('public/image/products-categories', $this->transLiterate['file_name'], $this->image);
         ProductsCategories::create([
             'title' => $this->title,
-            'img_title' => $this->img_title,
-            'img' => $this->transLiterate['file_name'].'.'.$this->image->getClientOriginalExtension(),
+            'img_title' => ($this->img_title)?:$this->title,
+            'img' => ($this->image) ? $this->transLiterate['file_name'].'.'.$this->image->getClientOriginalExtension(): '',
             'img_alt' => $this->img_title,
             'img_descr' => $this->img_descr,
             'description' => $this->description,

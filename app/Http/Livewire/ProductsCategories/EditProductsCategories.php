@@ -48,6 +48,12 @@ class EditProductsCategories extends Component
         $this->link = $this->product_category->link;
         $this->image = $this->product_category->img;
         $this->imageUrl=Storage::url('image/products-categories/'.$this->product_category->img);
+        if(count($this->menu)<$this->menu_id){
+            $this->selected=1;
+        }
+        else{
+            $this->selected=$this->menu_id;
+        }
     }
 
     protected $rules = [
@@ -92,7 +98,7 @@ class EditProductsCategories extends Component
             'link' => $this->link
 
         ]);
-        $category->menus_id=($this->menu_id==$this->selected)?$this->menu_id:$this->selected;
+        $category->menus_id=$this->selected;
         $category->save();
         return redirect()->route('products-categories.show');
     }
