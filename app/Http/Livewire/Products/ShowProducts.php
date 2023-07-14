@@ -42,7 +42,6 @@ class ShowProducts extends Component
         $this->render();
     }
     public function check($id, $checked){ //обработка действий по клику выбора пользователя и формируется массив ID пользователей для удаления
-
         if($checked==true){
             array_push($this->toDelete, $id);
         }

@@ -18,6 +18,7 @@ class ShowUsers extends Component
         $this->users = User::all();
         $this->roles = Role::all();
     }
+
     public function check($id, $checked){ //обработка действий по клику выбора пользователя и формируется массив ID пользователей для удаления
 
         if($checked==true){

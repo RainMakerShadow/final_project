@@ -41,7 +41,7 @@
                             <label for="checkbox-all-search" class="sr-only">checkbox</label>
                         </div>
                     </th>
-                    <th scope="col" class="px-6 py-3 hidden lg:table-cell lg:px-6 lg:py-3">
+                    <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
                             Назва
                             <a wire:click="sort('title')" href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -68,7 +68,7 @@
 
                         <td class="w-4 p-4">
                             <div class="flex items-center">
-                                <input wire:click='check($event.target.dataset.id, $event.target.checked)' data-id="{{$menu_item}}" id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {{$checkedAll}}>
+                                <input wire:click='check($event.target.dataset.id, $event.target.checked)' data-id="{{$menu_item->id}}" id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {{$checkedAll}}>
                                 <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                             </div>
                         </td>

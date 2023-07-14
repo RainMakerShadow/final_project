@@ -27,6 +27,11 @@ class AddUser extends Component
         'email' => 'required|email',
         'password' => 'required|min:8',
     ];
+
+    public function handleBottomBack(){
+        return redirect()->route('user.show');
+    }
+
     public function submit()
     {
 
@@ -45,17 +50,6 @@ class AddUser extends Component
             'role'=> $this->selected,
             'profile_photo_path' => (is_object($this->image))?$transLiterate['file_name'].'.'.$this->image->getClientOriginalExtension():$user->profile_photo_path,
         ]);
-/*
-        $user=User::find($this->userId);
-        $user->update([
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => ($this->password===$this->password_valid)?$this->password_valid: Hash::make($this->password),
-        ]);
-        $user->role=$this->selected;
-        $user->save();
-        $user->save()
-        $user->role=$this->selected;*/
 
         return redirect()->route('user.show');
     }

@@ -41,7 +41,7 @@
                             <label for="checkbox-all-search" class="sr-only">checkbox</label>
                         </div>
                     </th>
-                    <th scope="col" class="px-6 py-3 hidden lg:table-cell lg:px-6 lg:py-3">
+                    <th scope="col" class="px-6 py-3">
                         <div class="flex items-center">
                             Назва
                             <a wire:click="sort('title')" href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
