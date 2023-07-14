@@ -35,6 +35,9 @@ class EditUser extends Component
         'password' => 'required|min:8',
     ];
 
+    public function upload(){
+        dd();
+    }
 
     public function submit()
     {
