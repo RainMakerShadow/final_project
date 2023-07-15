@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 use App\Models\Menu as MenuModel;
 use App\Models\ArticleCategory;
@@ -10,7 +11,12 @@ use App\Models\NewsCategory;
 
 class Menu extends Component
 {
+    public $route;
 
+    public function mount()
+    {
+        $this->route = Route::currentRouteName();
+    }
     public function render()
     {
         $menu=MenuModel::all();

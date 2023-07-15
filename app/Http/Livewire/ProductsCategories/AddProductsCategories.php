@@ -46,6 +46,11 @@ class AddProductsCategories extends Component
 
         $this->validate();
         if($this->image) (new UpLoadImage)->upLoadImage('public/image/products-categories', $this->transLiterate['file_name'], $this->image);
+        foreach ($this->menu as $item ){
+            if ($item->id == $this->selected){
+                $this->link=$item->link.$this->link;
+            }
+        }
         ProductsCategories::create([
             'title' => $this->title,
             'img_title' => ($this->img_title)?:$this->title,

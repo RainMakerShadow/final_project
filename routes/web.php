@@ -27,7 +27,7 @@ use App\Http\Livewire\Main;
 
 Route::get('/', function () {
     return view('/layouts/main');
-});
+})->name('main');
 
 Route::middleware([
     'auth:sanctum',

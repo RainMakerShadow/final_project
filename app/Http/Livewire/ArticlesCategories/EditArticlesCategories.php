@@ -48,11 +48,10 @@ class EditArticlesCategories extends Component
         $this->link = $this->articles_categories->link;
         $this->image = $this->articles_categories->img;
         $this->imageUrl=Storage::url('image/articles-categories/'.$this->articles_categories->img);
-        if(count($this->menu)<$this->menu_id){
-            $this->selected=1;
-        }
-        else{
-            $this->selected=$this->menu_id;
+        foreach ($this->menu as $item){
+            if($item->id == $this->menu_id){
+                $this->selected=$item->id;
+            }
         }
 
     }
@@ -89,6 +88,11 @@ class EditArticlesCategories extends Component
             ]);
             (new UpLoadImage)->UpLoadImage('public/image/articles-categories', $transLiterate['file_name'], $this->image);
         }
+        foreach ($this->menu as $item ){
+            if ($item->id == $this->selected){
+                $this->link=$item->link.'/'.$transLiterate['file_name'];
+            }
+        }
         $articles_categories->update([
             'title' => $this->title,
             'img_title' => $this->img_title,
@@ -97,7 +101,7 @@ class EditArticlesCategories extends Component
             'img_descr' => (!$this->img_descr)?$this->img_title:$this->img_descr,
             'description' => ($this->description)?:$this->title,
             'keywords' => ($this->keywords)?:$this->title,
-            'link' => $this->link
+            'link' =>$this->link
 
         ]);
         $articles_categories->menus_id=$this->selected;

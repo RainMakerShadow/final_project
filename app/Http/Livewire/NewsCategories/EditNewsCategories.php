@@ -48,11 +48,10 @@ class EditNewsCategories extends Component
         $this->link = $this->news_categories->link;
         $this->image = $this->news_categories->img;
         $this->imageUrl=Storage::url('image/news-categories/'.$this->news_categories->img);
-        if(count($this->menu)<$this->menu_id){
-            $this->selected=1;
-        }
-        else{
-            $this->selected=$this->menu_id;
+        foreach ($this->menu as $item){
+            if($item->id == $this->menu_id){
+                $this->selected=$item->id;
+            }
         }
 
     }
@@ -88,6 +87,11 @@ class EditNewsCategories extends Component
                 'image' => 'required|file|max:4096',
             ]);
             (new UpLoadImage)->UpLoadImage('public/image/products-categories', $transLiterate['file_name'], $this->image);
+        }
+        foreach ($this->menu as $item ){
+            if ($item->id == $this->selected){
+                $this->link=$item->link.'/'.$transLiterate['file_name'];
+            }
         }
         $news_category->update([
             'title' => $this->title,

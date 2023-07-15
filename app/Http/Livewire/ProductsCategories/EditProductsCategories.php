@@ -48,11 +48,11 @@ class EditProductsCategories extends Component
         $this->link = $this->product_category->link;
         $this->image = $this->product_category->img;
         $this->imageUrl=Storage::url('image/products-categories/'.$this->product_category->img);
-        if(count($this->menu)<$this->menu_id){
-            $this->selected=1;
-        }
-        else{
-            $this->selected=$this->menu_id;
+        $this->selected=1;
+        foreach ($this->menu as $item){
+            if($item->id == $this->menu_id){
+                $this->selected=$item->id;
+            }
         }
     }
 
@@ -74,9 +74,9 @@ class EditProductsCategories extends Component
         return redirect()->route('products-categories.show');
     }
 
-    public function handleSelectMenu($elem){
-        $this->selected=$elem;
-    }
+//    public function handleSelectMenu($elem){
+//        $this->selected=$elem;
+//    }
     public function submit()
     {
 
@@ -89,6 +89,11 @@ class EditProductsCategories extends Component
                 'image' => 'required|file|max:4096',
             ]);
             (new UpLoadImage)->UpLoadImage('public/image/products-categories', $transLiterate['file_name'], $this->image);
+        }
+        foreach ($this->menu as $item ){
+            if ($item->id == $this->selected){
+                $this->link=$item->link.'/'.$transLiterate['file_name'];
+            }
         }
         $category->update([
             'title' => $this->title,
