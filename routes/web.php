@@ -10,6 +10,7 @@ use App\Http\Livewire\Articles;
 use App\Http\Livewire\ArticlesCategories;
 use App\Http\Livewire\Menu;
 use App\Http\Livewire\Gallery;
+use App\Http\Livewire\Main;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,4 +90,6 @@ Route::middleware([
     Route::get('/gallery/{id}/edit', Gallery\EditGallery::class)->name('gallery.edit');
     Route::get('/gallery/add', Gallery\AddGallery::class)->name('gallery.add');
     Route::get('/gallery/delete{toDelete}', Gallery\DeleteGallery::class)->name('gallery.delete');
+
+// logout user
 });

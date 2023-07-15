@@ -218,10 +218,6 @@
                     <button href="{{ route('logout') }}" class="flex-1 ml-3 whitespace-nowrap text-left ">
                         Вихід
                     </button>
-                    {{--                    <x-jet-dropdown-link  href="{{ route('logout') }} "
-                                                             @click.prevent="$root.submit();">
-                                           --}}{{-- {{ __('Log Out') }}--}}{{--
-                                        </x-jet-dropdown-link>--}}
                 </form>
 
             </li>
