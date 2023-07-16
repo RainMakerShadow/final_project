@@ -45,6 +45,6 @@ class AddMenu extends Component
 
     public function render()
     {
-        return view('menu.add-menu');
+        return view('menu.add-menu')->layout('layouts.admin');
     }
 }

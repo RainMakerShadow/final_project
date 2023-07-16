@@ -68,6 +68,6 @@ class ShowArticlesCategories extends Component
     {
         $articles_categories=$this->articles_categories;
         $menu=$this->menu;
-        return view('articles-categories.show-articles-categories', compact('articles_categories', 'menu'));
+        return view('articles-categories.show-articles-categories', compact('articles_categories', 'menu'))->layout('layouts.admin');
     }
 }

@@ -57,6 +57,6 @@ class AddUser extends Component
     public function render()
     {
         $roles = Role::all();
-        return view('users.edit-user', compact('roles'));
+        return view('users.edit-user', compact('roles'))->layout('layouts.admin');
     }
 }

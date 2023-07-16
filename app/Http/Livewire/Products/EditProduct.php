@@ -161,6 +161,6 @@ class EditProduct extends Component
     {
         $product = $this->product;
         $categories = $this->categories;
-        return view('products.edit-products', compact('product', 'categories'));
+        return view('products.edit-products', compact('product', 'categories'))->layout('layouts.admin');
     }
 }

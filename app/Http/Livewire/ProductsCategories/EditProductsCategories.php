@@ -115,6 +115,6 @@ class EditProductsCategories extends Component
     {
         $product_category=$this->product_category;
         $menu=$this->menu;
-        return view('products-categories.edit-products-categories', compact('product_category', 'menu'));
+        return view('products-categories.edit-products-categories', compact('product_category', 'menu'))->layout('layouts.admin');
     }
 }

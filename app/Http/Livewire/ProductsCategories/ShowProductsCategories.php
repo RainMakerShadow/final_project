@@ -69,6 +69,6 @@ class ShowProductsCategories extends Component
     {
         $products_categories=$this->products_categories;
         $menu=$this->menu;
-        return view('products-categories.show-products-categories', compact('products_categories', 'menu'));
+        return view('products-categories.show-products-categories', compact('products_categories', 'menu'))->layout('layouts.admin');
     }
 }

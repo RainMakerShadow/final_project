@@ -28,13 +28,25 @@
 <body  class="bg-white dark:bg-gray-900">
 
     <livewire:menu />
-
+        @if(route(request()->route()->getName()) == route('shop.page'))
+        <div class="grid grid-cols-12 w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="col-span-3">
+                Sidebar для фильтрации
+            </div>
+            <div class="col-span-9 w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                {{$slot}}
+            </div>
+        </div>
+        @else
+            <div class="col-span-8 w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                {{$slot}}
+            </div>
+        @endif
 {{--    @stack('modals')--}}
     <livewire:footer/>
+
+
     @livewireScripts
-
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script>

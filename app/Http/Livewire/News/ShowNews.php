@@ -8,6 +8,6 @@ class ShowNews extends Component
 {
     public function render()
     {
-        return view('news.show-news');
+        return view('news.show-news')->layout('layouts.admin');
     }
 }

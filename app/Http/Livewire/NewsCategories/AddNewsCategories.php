@@ -70,6 +70,6 @@ class AddNewsCategories extends Component
     public function render()
     {
         $menu=$this->menu;
-        return view('news-categories.add-news-categories', compact('menu'));
+        return view('news-categories.add-news-categories', compact('menu'))->layout('layouts.admin');
     }
 }

@@ -19,6 +19,6 @@ class DeleteArticlesCategories extends Component
     }
     public function render()
     {
-        return view('articles-categories.delete-articles-categories');
+        return view('articles-categories.delete-articles-categories')->layout('layouts.admin');
     }
 }

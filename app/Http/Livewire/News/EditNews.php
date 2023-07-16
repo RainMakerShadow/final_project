@@ -8,6 +8,6 @@ class EditNews extends Component
 {
     public function render()
     {
-        return view('news.edit-news');
+        return view('news.edit-news')->layout('layouts.admin');
     }
 }

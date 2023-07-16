@@ -8,6 +8,6 @@ class DeleteNews extends Component
 {
     public function render()
     {
-        return view('news.delete-news');
+        return view('news.delete-news')->layout('layouts.admin');
     }
 }

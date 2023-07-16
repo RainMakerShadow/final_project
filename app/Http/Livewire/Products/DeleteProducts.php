@@ -19,6 +19,6 @@ class DeleteProducts extends Component
     }
     public function render()
     {
-        return view('products.show-products');
+        return view('products.show-products')->layout('layouts.admin');
     }
 }

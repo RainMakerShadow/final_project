@@ -96,6 +96,6 @@ class EditUser extends Component
         $roles = $this->roles;
 
 
-        return view('users.edit-user', compact('user', 'roles'));
+        return view('users.edit-user', compact('user', 'roles'))->layout('layouts.admin');
     }
 }

@@ -68,6 +68,6 @@ class ShowNewsCategories extends Component
     {
         $news_categories=$this->news_categories;
         $menu=$this->menu;
-        return view('news-categories.show-news-categories', compact('news_categories', 'menu'));
+        return view('news-categories.show-news-categories', compact('news_categories', 'menu'))->layout('layouts.admin');
     }
 }

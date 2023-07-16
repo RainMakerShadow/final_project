@@ -63,6 +63,6 @@ class ShowMenu extends Component
     public function render()
     {
         $menu=$this->menu;
-        return view('menu.show-menu', compact('menu'));
+        return view('menu.show-menu', compact('menu'))->layout('layouts.admin');
     }
 }

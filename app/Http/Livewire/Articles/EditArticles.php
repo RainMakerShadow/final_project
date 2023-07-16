@@ -8,6 +8,6 @@ class EditArticles extends Component
 {
     public function render()
     {
-        return view('articles.edit-articles');
+        return view('articles.edit-articles')->layout('layouts.admin');
     }
 }

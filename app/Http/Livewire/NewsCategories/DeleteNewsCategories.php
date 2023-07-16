@@ -19,6 +19,6 @@ class DeleteNewsCategories extends Component
     }
     public function render()
     {
-        return view('news-categories.delete-news-categories');
+        return view('news-categories.delete-news-categories')->layout('layouts.admin');
     }
 }

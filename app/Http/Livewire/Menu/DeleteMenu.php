@@ -20,6 +20,6 @@ class DeleteMenu extends Component
     }
     public function render()
     {
-        return view('menu.show-menu');
+        return view('menu.show-menu')->layout('layouts.admin');
     }
 }

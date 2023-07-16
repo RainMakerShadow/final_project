@@ -113,6 +113,6 @@ class EditNewsCategories extends Component
     {
         $news_category=$this->news_categories;
         $menu=$this->menu;
-        return view('news-categories.edit-news-categories', compact('news_category', 'menu'));
+        return view('news-categories.edit-news-categories', compact('news_category', 'menu'))->layout('layouts.admin');
     }
 }

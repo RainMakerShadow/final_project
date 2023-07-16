@@ -19,6 +19,6 @@ class DeleteUser extends Component
     }
     public function render()
     {
-        return view('users.show-users');
+        return view('users.show-users')->layout('layouts.admin');
     }
 }

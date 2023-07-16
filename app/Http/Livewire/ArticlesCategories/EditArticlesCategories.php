@@ -113,6 +113,6 @@ class EditArticlesCategories extends Component
     {
         $article_category=$this->articles_categories;
         $menu=$this->menu;
-        return view('articles-categories.edit-articles-categories', compact('article_category', 'menu'));
+        return view('articles-categories.edit-articles-categories', compact('article_category', 'menu'))->layout('layouts.admin');
     }
 }

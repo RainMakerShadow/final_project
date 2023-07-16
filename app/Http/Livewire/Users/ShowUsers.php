@@ -52,6 +52,6 @@ class ShowUsers extends Component
     {
     $users = $this->users;
     $roles = $this->roles;
-        return view('users.show-users', compact('users', 'roles'));
+        return view('users.show-users', compact('users', 'roles'))->layout('layouts.admin');
     }
 }

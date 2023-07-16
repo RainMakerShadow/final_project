@@ -72,6 +72,6 @@ class AddArticlesCategories extends Component
     public function render()
     {
         $menu=$this->menu;
-        return view('articles-categories.add-articles-categories', compact('menu'));
+        return view('articles-categories.add-articles-categories', compact('menu'))->layout('layouts.admin');
     }
 }

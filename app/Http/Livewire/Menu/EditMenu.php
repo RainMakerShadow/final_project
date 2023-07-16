@@ -61,6 +61,6 @@ class EditMenu extends Component
     public function render()
     {
         $menu=$this->menu;
-        return view('menu.edit-menu', compact('menu'));
+        return view('menu.edit-menu', compact('menu'))->layout('layouts.admin');
     }
 }
