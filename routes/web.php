@@ -35,7 +35,7 @@ Route::get('/', Index::class)->name('main.page');
 Route::get('/shop', Shop::class)->name('shop.page');
 Route::get('/shop/sadzhanci-vinogradu', Shop::class)->name('shop.page');
 Route::get('/shop/vinograd', Shop::class)->name('shop.page');
-Route::get('/policy', Policy::class)->name('policy');
+//Route::get('/policy', Policy::class)->name('policy');
 
 
 
