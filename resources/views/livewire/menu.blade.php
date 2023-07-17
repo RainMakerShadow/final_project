@@ -11,16 +11,16 @@
                     <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                 </button>
             </div>
-            <div>
+            <div class="sm:m-2">
                 <a href="/order" id="shopping-card" type="button" class="mr-3 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                     </svg>
                 </a>
             </div>
         </div>
     </nav>
-    <nav class="bg-white rounded-lg shadow dark:bg-gray-900 m-4 mt-0">
+    <nav class="bg-gray-100 rounded-lg shadow dark:bg-gray-600 m-4 mt-0">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a data-collapse-toggle="navbar-user" href="#" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
@@ -358,27 +358,27 @@
             </div>
 
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-                <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-100 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-gray-100 dark:bg-gray-600 md:dark:bg-gray-600 dark:border-gray-700">
                     @foreach ($menu as $item)
                         @if ($item->id === $articlesCategories[0]->menus_id)
                             <button id="dropdownNavbarLink-{{$item->id}}" data-dropdown-toggle="dropdownNavbar-{{$item->id}}" class="flex items-center justify-between w-full py-2 pl-3 pr-4  text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">{{$item->title}} <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                 </svg></button>
                             <!-- Dropdown menu -->
-                            <div id="dropdownNavbar-{{$item->id}}" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            <div id="dropdownNavbar-{{$item->id}}" class="z-10 hidden font-normal bg-gray-100 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton-{{$item->id}}">
                                     @foreach($articlesCategories as $articleCategory)
                                         @if($articleCategory->menus_id == $item->id)
                                             <li>
-                                                <a href="{{$articleCategory->link}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                <a href="{{$articleCategory->link}}" class="block px-4 py-2 hover:bg-gray-200 hover:rounded dark:hover:bg-gray-600 dark:hover:text-white">
                                                     {{$articleCategory->title}}
                                                 </a>
                                             </li>
                                         @endif
                                     @endforeach
                                 </ul>
-                                <div class="py-1">
-                                    <a href="{{$item->link}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"> Всі розділи</a>
+                                <div class="py-1 hover:bg-gray-200 dark:hover:bg-gray-600 hover:rounded">
+                                    <a href="{{$item->link}}" class="block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"> Всі розділи</a>
                                 </div>
                             </div>
                         @elseif($item->id === $productsCategories[0]->menus_id)
@@ -386,20 +386,20 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                 </svg></button>
                             <!-- Dropdown menu -->
-                            <div id="dropdownNavbar-{{$item->id}}" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            <div id="dropdownNavbar-{{$item->id}}" class="z-10 hidden font-normal bg-gray-100 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton-{{$item->id}}">
                                     @foreach($productsCategories as $productCategory)
                                         @if($productCategory->menus_id==$item->id)
-                                            <li>
-                                                <a href="{{$productCategory->link}}" class="{{ $productCategory->link == request()->route()->uri() ? 'block ml-4 py-2 pl-3 pr-4 rounded text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500':'block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'}}">
+                                            <li class="{{($productCategory->link == '/'.request()->route()->uri()) ? 'cursor-default mt-2 mb-2 block ml-4 py-2 rounded text-gray-400 bg-gray-400 dark:bg-gray-700 md:bg-transparent md:text-gray-300 md:p-0 hover:rounded md:dark:text-gray-600':'block px-4 py-2 hover:rounded hover:bg-gray-200 bg-gray-100 dark:hover:bg-gray-600 dark:bg-gray-700 dark:hover:text-white cursor-pointer'}}">
+                                                <a href="{{$productCategory->link}}">
                                                     {{$productCategory->title}}
                                                 </a>
                                             </li>
                                         @endif
                                     @endforeach
                                 </ul>
-                                <div class="py-1">
-                                    <a href="{{$item->link}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"> Всі товари</a>
+                                <div class="py-1 hover:bg-gray-200 dark:hover:bg-gray-600 hover:rounded">
+                                    <a href="{{$item->link}}" class="block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"> Всі товари</a>
                                 </div>
                             </div>
                         @elseif($item->id === $newsCategories[0]->menus_id)
@@ -407,24 +407,24 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                 </svg></button>
                             <!-- Dropdown menu -->
-                            <div id="dropdownNavbar-{{$item->id}}" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            <div id="dropdownNavbar-{{$item->id}}" class="z-10 hidden font-normal bg-gray-100 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton-{{$item->id}}">
                                     @foreach($newsCategories as $newsCategory)
                                         <li>
-                                            <a href="{{$newsCategory->link}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            <a href="{{$newsCategory->link}}" class="block px-4 py-2 hover:bg-gray-200 hover:rounded dark:hover:bg-gray-600 dark:hover:text-white">
                                                 {{$newsCategory->title}}
                                             </a>
                                         </li>
                                     @endforeach
                                 </ul>
-                                <div class="py-1">
-                                    <a href="{{$item->link}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"> Всі розділи</a>
+                                <div class="py-1 hover:bg-gray-200 dark:hover:bg-gray-600 hover:rounded">
+                                    <a href="{{$item->link}}" class="block px-4 py-2 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"> Всі розділи</a>
                                 </div>
                             </div>
                         @else
                             @if($item->link=='/')
                             <li>
-                                <a href="{{$item->link}}" class="{{ $route === 'main.page' ? 'block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500' : 'block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' }}" aria-current="page" >{{$item->title}}
+                                <a href="{{$item->link}}" class="{{ $route === 'main.page' ? 'block py-2 pl-3 pr-4 text-gray-300 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 hover:rounded' : 'block py-2 pl-3 pr-4 text-gray-900 rounded hover:rounded hover:bg-gray-200 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' }}" aria-current="page" >{{$item->title}}
                                 </a>
                             </li>
                             @elseif($item->link=='/')

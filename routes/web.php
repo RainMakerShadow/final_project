@@ -12,6 +12,7 @@ use App\Http\Livewire\Menu;
 use App\Http\Livewire\Gallery;
 use App\Http\Livewire\Index;
 use App\Http\Livewire\Shop;
+use App\Http\Livewire\Policy;
 
 
 /*
@@ -34,6 +35,7 @@ Route::get('/', Index::class)->name('main.page');
 Route::get('/shop', Shop::class)->name('shop.page');
 Route::get('/shop/sadzhanci-vinogradu', Shop::class)->name('shop.page');
 Route::get('/shop/vinograd', Shop::class)->name('shop.page');
+Route::get('/policy', Policy::class)->name('policy');
 
 
 
