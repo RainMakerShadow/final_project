@@ -17,7 +17,6 @@ class Shop extends Component
         $priceMax = $request->session()->get('priceMax');
         $category_list=$request->session()->get('category_list');
 
-      //dd($category_list, $priceMax,  $priceMin);
         if ($category_list){
             $this->products=Product::whereIn('category_id', $category_list)
                 ->where(function ($query) use ($priceMin, $priceMax) {
@@ -50,6 +49,11 @@ class Shop extends Component
         }
 
     }
+
+    public function AddToBasket($target){
+        dd($target);
+    }
+
     public function render()
     {
         $products=$this->products;
