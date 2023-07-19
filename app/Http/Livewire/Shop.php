@@ -16,7 +16,7 @@ class Shop extends Component
         $priceMin = $request->session()->get('priceMin');
         $priceMax = $request->session()->get('priceMax');
         $category_list=$request->session()->get('category_list');
-        //re$request->session()->remove('category_list');
+
       //dd($category_list, $priceMax,  $priceMin);
         if ($category_list){
             $this->products=Product::whereIn('category_id', $category_list)

@@ -20,7 +20,7 @@ class Sidebar extends Component
         $this->categories=ProductsCategories::all();
         $this->priceMin=($request->session()->get('priceMin')) ? $request->session()->get('priceMin') : Product::min('price');
         $this->priceMax=($request->session()->get('priceMax')) ? $request->session()->get('priceMax') : Product::max('price');
-        //$this->category=$request->session()->get('category_list');
+        $this->category=$request->session()->get('category_list');
 
 
     }

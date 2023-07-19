@@ -11,12 +11,13 @@ class ClearSessionMiddleware
 {
     public function handle($request, Closure $next)
     {
-        // Здесь вы можете проверить текущий маршрут и, если это тот, который вы хотите очистить сессию,
-        // выполнить очистку сессии.
+
+
         $url=substr($request->fullUrl(), strrpos($request->fullUrl(),'/'));
         if ($url != '/shop') {
             Session::remove('category_list');
-
+            Session::remove('priceMin');
+            Session::remove('priceMax');
         }
 
         return $next($request);
