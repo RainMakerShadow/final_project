@@ -287,7 +287,7 @@
                     </svg>
                     <span class="self-center text-2xl m-3 text-black font-semibold whitespace-nowrap dark:text-white">{{ strtoupper(config('app.name')) }}</span>
                 </a>
-                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-100">
+                <ul class="flex flex-wrap items-center sm:justify-between mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-100">
                     <li>
                         <a href="/about" class="mr-4 hover:underline md:mr-6 ">Про нас</a>
                     </li>
@@ -303,7 +303,7 @@
                 </ul>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">{{config('app.name')}}™</a>. Всі права захищено.</span>
+            <span class="block text-sm text-gray-500 text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">{{config('app.name')}}™</a>. Всі права захищено.</span>
         </div>
     </footer>
 </div>

@@ -31,11 +31,19 @@ use App\Http\Livewire\Policy;
 Route::get('/', function () {
     return view('/layouts/main');
 })->name('main');
-Route::get('/', Index::class)->name('main.page');
-Route::get('/shop', Shop::class)->name('shop.page');
-Route::get('/shop/sadzhanci-vinogradu', Shop::class)->name('shop.page');
-Route::get('/shop/vinograd', Shop::class)->name('shop.page');
-//Route::get('/policy', Policy::class)->name('policy');
+
+
+Route::group(['middleware' => 'web'], function () {
+    \Illuminate\Session\Middleware\StartSession::class;
+    Route::get('/', Index::class)->name('main.page');
+    Route::get('/shop', Shop::class)->name('shop.page');
+    Route::get('/shop/sadzhanci-vinogradu', Shop::class)->name('shop.page');
+    Route::get('/shop/vinograd', Shop::class)->name('shop.page');
+});
+/*Route::post('/shop', Shop::class)->name('shop.page');
+Route::post('/shop/sadzhanci-vinogradu', Shop::class)->name('shop.page');
+Route::post('/shop/vinograd', Shop::class)->name('shop.page');*/
+
 
 
 
