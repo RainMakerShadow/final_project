@@ -16,8 +16,8 @@ class Shop extends Component
         $priceMin = $request->session()->get('priceMin');
         $priceMax = $request->session()->get('priceMax');
         $category_list=$request->session()->get('category_list');
-
-        //dd($category_list, $priceMax,  $priceMin);
+        //re$request->session()->remove('category_list');
+      //dd($category_list, $priceMax,  $priceMin);
         if ($category_list){
             $this->products=Product::whereIn('category_id', $category_list)
                 ->where(function ($query) use ($priceMin, $priceMax) {
@@ -31,8 +31,8 @@ class Shop extends Component
             $this->render();
         }
         else{
-            //dd('fefew');
             $url = url()->current();
+
             $url=substr($url, strrpos($url,'/'));
             $categories=ProductsCategories::all();
             if(request()->route()->uri() ==='shop')

@@ -20,29 +20,35 @@ class Sidebar extends Component
         $this->categories=ProductsCategories::all();
         $this->priceMin=($request->session()->get('priceMin')) ? $request->session()->get('priceMin') : Product::min('price');
         $this->priceMax=($request->session()->get('priceMax')) ? $request->session()->get('priceMax') : Product::max('price');
+        //$this->category=$request->session()->get('category_list');
 
 
     }
     public function submit(Request $request){
-        $request->session()->put('priceMin', $this->priceMin);
-        $request->session()->put('priceMax', $this->priceMax);
-        $request->session()->put('category_list', $this->category);
-        if($this->category){
-            return redirect()->route('shop.page');
+
+        //dd($this->category);
+        if(!$this->category){
+            $this->addError('checkedBox', 'Оберіть хочаб одну категорію');
         }
         else{
-            $this->message='Оберіть хочаб одну категорію';
+            $request->session()->put('priceMin', $this->priceMin);
+            $request->session()->put('priceMax', $this->priceMax);
+            $request->session()->put('category_list', $this->category);
+            return redirect()->route('shop.page');
+
         }
+
     }
     public function handleCheckboxFilter($id, $checked){
-
         if($checked==true){
-            array_push($this->category, $id);
+           $this->category[]=$id;
+;
         }
-        else{
+        elseif(array_search($id, $this->category)){
             $key = array_search($id, $this->category);
             unset($this->category[$key]);
         }
+
 
     }
 
@@ -51,6 +57,7 @@ class Sidebar extends Component
         $priceMin=$this->priceMin;
         $priceMax=$this->priceMax;
         $categories=$this->categories;
-        return view('livewire.sidebar', compact('categories','priceMax', 'priceMin'));
+        $inputChecked=$this->category;
+        return view('livewire.sidebar', compact('categories','priceMax', 'priceMin', 'inputChecked') );
     }
 }

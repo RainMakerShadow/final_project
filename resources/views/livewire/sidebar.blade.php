@@ -10,17 +10,25 @@
                     </h6>
                     @foreach($categories as $category)
                         <div class="flex items-center">
-                            <input wire:click="handleCheckboxFilter($event.target.dataset.id, $event.target.checked)" id="{{$category->title}}" data-id="{{$category->id}}" type="checkbox" value=""
-                                   class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <input wire:click="handleCheckboxFilter($event.target.id, $event.target.checked)" id="{{$category->id}}" type="checkbox" value=""
+                                   class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                   @if($inputChecked)
+                                        @foreach($inputChecked as $item)
+                                            @if ($item == $category->id)
+                                                checked
+                                            @endif
+                                        @endforeach
+                                    @endif
+                            />
 
-                            <label for="{{$category->title}}" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            <label for="{{$category->id}}" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                 {{$category->title}}
                             </label>
                         </div>
                     @endforeach
 
                 </div>
-                @error($category->title) <span class="error text-red-500">{{ $message }}</span> @enderror
+                @error('checkedBox') <span class="error text-red-500">{{ $message }}</span> @enderror
                 <!-- Prices -->
                 <div class="space-y-2">
                     <h6 class="text-base font-medium text-black dark:text-white">

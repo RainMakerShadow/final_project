@@ -37,8 +37,8 @@ Route::group(['middleware' => 'web'], function () {
     \Illuminate\Session\Middleware\StartSession::class;
     Route::get('/', Index::class)->name('main.page');
     Route::get('/shop', Shop::class)->name('shop.page');
-    Route::get('/shop/sadzhanci-vinogradu', Shop::class)->name('shop.page');
-    Route::get('/shop/vinograd', Shop::class)->name('shop.page');
+    Route::get('/shop/sadzhanci-vinogradu', Shop::class)->name('sadzhanci-vinogradu.page');
+    Route::get('/shop/vinograd', Shop::class)->name('vinograd.page');
 });
 /*Route::post('/shop', Shop::class)->name('shop.page');
 Route::post('/shop/sadzhanci-vinogradu', Shop::class)->name('shop.page');
