@@ -2,8 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\ProductsCategories;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use Illuminate\Http\Request;
 
@@ -50,8 +53,18 @@ class Shop extends Component
 
     }
 
-    public function AddToBasket($target){
-        dd($target);
+    public function submit($product_id){
+
+        if (!Session::has('user_id')) {
+            $user_id = uniqid();
+            Session::put('user_id', $user_id);
+        } else {
+            $user_id = Session::get('user_id');
+        }
+        OrderItem::create([
+            'user_id'=>$user_id,
+            'product_id'=>$product_id,
+        ]);
     }
 
     public function render()

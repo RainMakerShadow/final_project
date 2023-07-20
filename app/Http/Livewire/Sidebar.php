@@ -26,9 +26,8 @@ class Sidebar extends Component
     }
     public function submit(Request $request){
 
-        //dd($this->category);
         if(!$this->category){
-            $this->addError('checkedBox', 'Оберіть хочаб одну категорію');
+            $this->addError('checkedBox', 'Оберіть хоча б одну категорію');
         }
         else{
             $request->session()->put('priceMin', $this->priceMin);
@@ -42,14 +41,15 @@ class Sidebar extends Component
     public function handleCheckboxFilter($id, $checked){
         if($checked==true){
            $this->category[]=$id;
-;
         }
-        elseif(array_search($id, $this->category)){
-            $key = array_search($id, $this->category);
-            unset($this->category[$key]);
+        else{
+
+            foreach ($this->category as $key=>$value){
+                if($value==$id){
+                    unset($this->category[$key]);
+                }
+            }
         }
-
-
     }
 
     public function render()
