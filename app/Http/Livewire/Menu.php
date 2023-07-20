@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use App\Models\Menu as MenuModel;
 use App\Models\ArticleCategory;
@@ -13,10 +15,15 @@ class Menu extends Component
 {
     public $route;
 
+
     public function mount()
     {
         $this->route = Route::currentRouteName();
+        if(Session::get('user_id')){
+            $this->ifOrders=OrderItem::query()->where('user_id', Session::get('user_id'))->count();
+        }
     }
+
     public function render()
     {
         $menu=MenuModel::all();

@@ -42,8 +42,8 @@
                 {{$slot}}
             </div>
         @endif
-{{--    @stack('modals')--}}
-    <livewire:footer/>
+    <livewire:basket />
+    <livewire:footer />
 
 
     @livewireScripts

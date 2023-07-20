@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use Illuminate\Http\Request;
+use App\Http\Livewire\Menu;
 
 class Shop extends Component
 {
@@ -33,6 +34,7 @@ class Shop extends Component
             $this->render();
         }
         else{
+            //dd(request()->route()->uri() ==='order');
             $url = url()->current();
 
             $url=substr($url, strrpos($url,'/'));
@@ -41,6 +43,7 @@ class Shop extends Component
             {
                 $this->products=Product::all();
             }
+
             else{
                 foreach ($categories as $category){
 
@@ -61,10 +64,21 @@ class Shop extends Component
         } else {
             $user_id = Session::get('user_id');
         }
-        OrderItem::create([
-            'user_id'=>$user_id,
-            'product_id'=>$product_id,
-        ]);
+        $orderItem=OrderItem::where('product_id', $product_id)->first();
+        if(!$orderItem){
+            if(OrderItem::create([
+                'user_id'=>$user_id,
+                'product_id'=>$product_id,
+                'quantity'=>1,
+            ])){
+                $this->emit("updateCounter");
+               $this->emit("updateOrders");
+            };
+        }
+        else{
+            $orderItem->quantity+=1;
+            $orderItem->save();
+        }
     }
 
     public function render()

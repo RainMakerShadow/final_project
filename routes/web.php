@@ -12,6 +12,7 @@ use App\Http\Livewire\Menu;
 use App\Http\Livewire\Gallery;
 use App\Http\Livewire\Index;
 use App\Http\Livewire\Shop;
+use App\Http\Livewire\Order;
 use App\Http\Livewire\Policy;
 
 
@@ -39,12 +40,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/shop', Shop::class)->name('shop.page');
     Route::get('/shop/sadzhanci-vinogradu', Shop::class)->name('sadzhanci-vinogradu.page');
     Route::get('/shop/vinograd', Shop::class)->name('vinograd.page');
+    Route::get('/order', Shop::class)->name('shop.page');
+    //Route::get('/order', Order::class)->name('Order.page');
 });
-/*Route::post('/shop', Shop::class)->name('shop.page');
-Route::post('/shop/sadzhanci-vinogradu', Shop::class)->name('shop.page');
-Route::post('/shop/vinograd', Shop::class)->name('shop.page');*/
-
-
 
 
 Route::middleware([

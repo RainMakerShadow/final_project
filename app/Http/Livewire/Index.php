@@ -21,6 +21,9 @@ class Index extends Component
 
         $this->emit('updateBreadcrumbs', $breadcrumbs);
     }
+//    public function hydrate(){
+//        $this->emit('updateOrders');
+//    }
     public function render()
     {
         return view('livewire.index');

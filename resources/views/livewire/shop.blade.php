@@ -9,19 +9,19 @@
                     <div class="">
                         <a href="#" class="group">
     {{--                        <a href="{{route('product.link', $product->id)}}" class="group">--}}
-                            <div class="overflow-hidden rounded-lg bg-gray-200 max-h-40 h-fit shadow-md dark:shadow-neutral-600 shadow-gray-800">
-                                <img src="{{Illuminate\Support\Facades\Storage::url('image/products/'.$product->img) }}" alt="{{$product->img}}" class="h-40 w-full object-cover object-center group-hover:opacity-75 ">
+                            <div class=" rounded-lg bg-gray-200 max-h-40 h-fit shadow-md dark:shadow-neutral-600 shadow-gray-800 relative">
+                                <img src="{{Illuminate\Support\Facades\Storage::url('image/products/'.$product->img) }}" alt="{{$product->img}}" class="rounded-lg h-40 w-full object-cover object-center group-hover:opacity-75 ">
+                                @if($product->sale)
+                                    <h3 class="absolute -top-3 -right-3 text-gray-900 rounded-full bg-gray-200 p-2 shadow-lg shadow-gray-900/50">Розпродаж!</h3>
+                                @endif
+                                @if($product->new)
+                                    <h3 class="absolute -bottom-3 -left-3 text-gray-900 rounded-full bg-gray-200 p-2 shadow-lg shadow-gray-900/50 shadow-md dark:shadow-neutral-400/70" >Новинка!</h3>
+                                @endif
+                                @if($product->discount)
+                                    <h3 class="absolute -top-2 -left-2 text-gray-900 rounded-full bg-gray-200 p-2 shadow-lg shadow-gray-900/50 shadow-md dark:shadow-neutral-400/70">-{{$product->discount}}%</h3>
+                                @endif
                             </div>
                             <h3 class="mt-4 text-sm text-gray-700 dark:text-gray-400 h-10">{{$product->title}}</h3>
-                            @if($product->new)
-                                <h3>Новинка!</h3>
-                            @endif
-                            @if($product->discount)
-                                <h3>{{$product->discount}}%</h3>
-                            @endif
-                            @if($product->sale)
-                                <h3>Розпродаж!</h3>
-                            @endif
                             <p class="mt-1 text-lg font-medium text-gray-900 dark:text-gray-400 mb-2"> @if($product->discount) <s>₴ {{$product->price}}</s> ₴ {{number_format(($product->price-(($product->price*$product->discount)/100)), 2,'.',' ')}}@else {{$product->price}} @endif</p>
                         </a>
                         <div class="flex flex-col space-y-4">
@@ -29,7 +29,7 @@
 {{--                                wire:click="AddToBasket($event.target.id)"--}}
                                 id="{{$product->id}}"
                                 type="submit"
-                                class="{{(!$product->available) ? 'text-center py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 shadow-md dark:shadow-neutral-400/70 shadow-gray-400/50 ' : 'text-center py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 shadow-md hover:shadow dark:shadow-neutral-600/70 shadow-gray-800/50 focus:shadow-inner'}}"
+                                class="{{(!$product->available) ? 'text-center py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 shadow-sm dark:shadow-neutral-400/70 shadow-gray-400/50 ' : 'text-center py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 shadow-md hover:shadow dark:shadow-neutral-600/70 shadow-gray-800/50 focus:shadow-inner'}}"
                                 @if(!$product->available)
                                     disabled
                                 @endif>
