@@ -66,19 +66,18 @@ class Shop extends Component
         }
         $orderItem=OrderItem::where('product_id', $product_id)->first();
         if(!$orderItem){
-            if(OrderItem::create([
+            OrderItem::create([
                 'user_id'=>$user_id,
                 'product_id'=>$product_id,
                 'quantity'=>1,
-            ])){
-                $this->emit("updateCounter");
-               $this->emit("updateOrders");
-            };
+            ]);
         }
         else{
             $orderItem->quantity+=1;
             $orderItem->save();
         }
+        $this->emit("updateOrders");
+        $this->emit("updateCounter");
     }
 
     public function render()

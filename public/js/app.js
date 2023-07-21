@@ -3135,12 +3135,15 @@ __webpack_require__.r(__webpack_exports__);
 var toggler = document.getElementById("mega-menu-dropdown-button");
 var mNav = document.getElementById("mobile__nav");
 var close = document.getElementById("toggler__expanded");
-toggler.addEventListener("click", function () {
-  mNav.classList.remove("translate-x-full");
-});
-close.addEventListener("click", function () {
-  mNav.classList.add("translate-x-full");
-});
+
+// toggler.addEventListener("click", () => {
+//     mNav.classList.remove("translate-x-full");
+// });
+//
+// close.addEventListener("click", () => {
+//     mNav.classList.add("translate-x-full");
+// });
+
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();

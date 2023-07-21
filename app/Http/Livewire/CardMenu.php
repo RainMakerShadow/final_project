@@ -23,8 +23,8 @@ class CardMenu extends Component
     public function count(){
         if(Session::get('user_id')){
             $this->ifOrders=OrderItem::query()->where('user_id', Session::get('user_id'))->count();
-            //$this->emit("updateOrders");
         }
+        //$this->emit("updateOrders");
     }
 
     public function render()

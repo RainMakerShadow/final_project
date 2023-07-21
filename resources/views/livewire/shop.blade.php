@@ -12,13 +12,13 @@
                             <div class=" rounded-lg bg-gray-200 max-h-40 h-fit shadow-md dark:shadow-neutral-600 shadow-gray-800 relative">
                                 <img src="{{Illuminate\Support\Facades\Storage::url('image/products/'.$product->img) }}" alt="{{$product->img}}" class="rounded-lg h-40 w-full object-cover object-center group-hover:opacity-75 ">
                                 @if($product->sale)
-                                    <h3 class="absolute -top-3 -right-3 text-gray-900 rounded-full bg-gray-200 p-2 shadow-lg shadow-gray-900/50">Розпродаж!</h3>
+                                    <h3 class="absolute -top-3 -right-3 text-gray-700 text-xs dark:text-gray-900 rounded-full bg-gray-100 p-2 shadow-lg shadow-gray-900/50">Розпродаж!</h3>
                                 @endif
                                 @if($product->new)
-                                    <h3 class="absolute -bottom-3 -left-3 text-gray-900 rounded-full bg-gray-200 p-2 shadow-lg shadow-gray-900/50 shadow-md dark:shadow-neutral-400/70" >Новинка!</h3>
+                                    <h3 class="absolute -bottom-3 -left-3 text-gray-700 text-xs dark:text-gray-900  rounded-full bg-white p-2 shadow-lg shadow-gray-900/50 shadow-md dark:shadow-neutral-400/70" >Новинка!</h3>
                                 @endif
                                 @if($product->discount)
-                                    <h3 class="absolute -top-2 -left-2 text-gray-900 rounded-full bg-gray-200 p-2 shadow-lg shadow-gray-900/50 shadow-md dark:shadow-neutral-400/70">-{{$product->discount}}%</h3>
+                                    <h3 class="absolute -top-2 -left-2 text-gray-700 text-xs dark:text-gray-900  rounded-full bg-gray-100 p-2 shadow-lg shadow-gray-900/50 shadow-md dark:shadow-neutral-400/70">-{{$product->discount}}%</h3>
                                 @endif
                             </div>
                             <h3 class="mt-4 text-sm text-gray-700 dark:text-gray-400 h-10">{{$product->title}}</h3>

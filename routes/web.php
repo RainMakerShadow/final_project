@@ -40,7 +40,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/shop', Shop::class)->name('shop.page');
     Route::get('/shop/sadzhanci-vinogradu', Shop::class)->name('sadzhanci-vinogradu.page');
     Route::get('/shop/vinograd', Shop::class)->name('vinograd.page');
-    Route::get('/order', Shop::class)->name('shop.page');
+    Route::get('/order', Order::class)->name('order.page');
     //Route::get('/order', Order::class)->name('Order.page');
 });
 
