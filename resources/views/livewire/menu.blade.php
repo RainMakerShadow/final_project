@@ -320,7 +320,7 @@
                         </div>
                         <ul class="py-2" aria-labelledby="user-menu-button">
                             <li>
-                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" href="{{ route('dashboard') }}" :active="request()->routeIs('profile.show')">
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" href="{{ route('orders') }}" :active="request()->routeIs('profile.show')">
                                     {{ __('Панель керування') }}
                                 </a>
                             </li>

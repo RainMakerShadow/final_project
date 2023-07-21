@@ -14,6 +14,7 @@ use App\Http\Livewire\Index;
 use App\Http\Livewire\Shop;
 use App\Http\Livewire\Order;
 use App\Http\Livewire\Policy;
+use App\Http\Livewire\Orders\Orders;
 
 
 /*
@@ -50,9 +51,8 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+
+    Route::get('/dashboard/orders', Orders::class)->name('orders');
 //      user routs
     Route::get('dashboard/users', Users\ShowUsers::class)->name('user.show');
     Route::get('dashboard/user/{id}/edit', Users\EditUser::class)->name('user.edit');

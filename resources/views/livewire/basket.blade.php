@@ -34,8 +34,8 @@
                                         <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$product->title}}&#34;</th>
                                         <td class="px-4 py-3">
                                             @if($product->discount)
-                                                {{$product->price-($product->price*$product->discount)/100}}
-                                            @else{{$product->price}}
+                                                {{number_format($product->price-($product->price*$product->discount)/100, 2, '.', ' ')}}
+                                            @else{{number_format($product->price, 2, '.', ' ')}}
                                             @endif
                                         </td>
                                         <td class="px-4 py-3">
@@ -43,9 +43,9 @@
                                         </td>
                                         <td class="px-4 py-3">₴
                                             @if($product->discount)
-                                                {{($product->price-($product->price*$product->discount)/100)*$item->quantity}}
+                                                {{number_format(($product->price-($product->price*$product->discount)/100)*$item->quantity, 2, '.', ' ')}}
                                             @else
-                                                {{$product->price*$item->quantity}}
+                                                {{number_format($product->price*$item->quantity, 2, '.', ' ')}}
                                             @endif
                                         </td>
                                         <td class="px-4 py-3 flex items-center justify-end">
@@ -58,6 +58,7 @@
                             @endforeach
                         @endforeach
                     </tbody>
+                        <h4>Загальна сумма замовлення: {{$summ}}</h4>
                     @endif
                 </table>
                 <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">

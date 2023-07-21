@@ -38,7 +38,7 @@
                         <ul class="py-1" role="none">
                             <li>
                                 <div class="mt-3 space-y-1">
-                                    <x-jet-responsive-nav-link class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                                    <x-jet-responsive-nav-link class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" href="{{ route('orders') }}" :active="request()->routeIs('orders')">
                                         {{ __('Панель керування') }}
                                     </x-jet-responsive-nav-link>
                                     <!-- Account Management -->
@@ -107,7 +107,7 @@
 <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 xl:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
-            <x-jet-responsive-nav-link class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group" role="menuitem" href="{{ route('user.show') }}" :active="request()->routeIs('dashboard')">
+            <x-jet-responsive-nav-link class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group" role="menuitem" href="{{ route('orders') }}" :active="request()->routeIs('orders')">
                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 3h9.563M9.5 9h9.563M9.5 15h9.563M1.5 13a2 2 0 1 1 3.321 1.5L1.5 17h5m-5-15 2-1v6m-2 0h4"/>
                 </svg>

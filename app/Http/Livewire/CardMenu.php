@@ -16,13 +16,13 @@ class CardMenu extends Component
     public function mount()
     {
         if(Session::get('user_id')){
-            $this->ifOrders=(OrderItem::query()->where('user_id', Session::get('user_id'))->count()) ? OrderItem::query()->where('user_id', Session::get('user_id'))->count():'';
+            $this->ifOrders=(OrderItem::query()->where('user_id', Session::get('user_id'))->where('done', false)->count()) ? OrderItem::query()->where('user_id', Session::get('user_id'))->where('done', false)->count():'';
         }
     }
 
     public function count(){
         if(Session::get('user_id')){
-            $this->ifOrders=OrderItem::query()->where('user_id', Session::get('user_id'))->count();
+            $this->ifOrders=OrderItem::query()->where('user_id', Session::get('user_id'))->where('done', false)->count();
         }
         //$this->emit("updateOrders");
     }

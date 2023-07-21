@@ -13,5 +13,6 @@ class OrderItem extends Model
         'user_id',
         'product_id',
         'quantity',
+        'done',
         ];
 }

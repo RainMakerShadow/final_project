@@ -25,6 +25,7 @@ class OrdersItems extends Migration
             $table->integer('product_title');
             $table->integer('product_price');
             $table->integer('product_discount');
+            $table->boolean('done')->default(false);
 
             $table->foreign('product_id')->references('id')->on('products')->OnDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->nullOnDelete();

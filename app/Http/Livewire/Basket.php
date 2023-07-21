@@ -15,12 +15,14 @@ class Basket extends Component
     public $count;
     public $message;
     public $hidden=true;
+    public $summ;
 
     protected $listeners = ['updateOrders'=>'update'];
 
     public function mount(){
+        $this->summ=0;
         if(Session::get('user_id')){
-            if (OrderItem::query()->where('user_id',Session::get('user_id') )->count()){
+            if (OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->count()){
                 $this->isOrders=true;
                 $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->get();
                 if(OrderItem::query()->where('user_id',Session::get('user_id') )->get()){
@@ -30,6 +32,15 @@ class Basket extends Component
                     $this->orders=Product::query()->whereIn('id', $this->arrOrders)->get();
                     $this->count = OrderItem::all();
                 }
+                foreach ($orders as $order){
+                    foreach ($this->orders as $product){
+                        if($product->id == $order->product_id){
+                            $this->summ+=($product->discount)
+                                ? ($product->price-($product->price*$product->discount)/100) * $order->quantity
+                                :  $product->price*$order->quantity;
+                        }
+                    }
+                }
             }
             else{
                 $this->message="Ваш кошик порожній...";
@@ -38,11 +49,12 @@ class Basket extends Component
     }
 
     public function inputClick($id, $value){
+        $this->summ=0;
         $orderItem=OrderItem::where('product_id', $id)->first();
         $orderItem->quantity=$value;
         $orderItem->save();
         if(Session::get('user_id')){
-            if (OrderItem::query()->where('user_id',Session::get('user_id') )->count()){
+            if (OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->count()){
                 $this->isOrders=true;
                 $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->get();
                 if(OrderItem::query()->where('user_id',Session::get('user_id') )->get()){
@@ -51,6 +63,15 @@ class Basket extends Component
                     }
                     $this->orders=Product::query()->whereIn('id', $this->arrOrders)->get();
                     $this->count = OrderItem::all();
+                }
+                foreach ($orders as $order){
+                    foreach ($this->orders as $product){
+                        if($product->id == $order->product_id){
+                            $this->summ+=($product->discount)
+                                ? ($product->price-($product->price*$product->discount)/100) * $order->quantity
+                                :  $product->price*$order->quantity;
+                        }
+                    }
                 }
             }
             else{
@@ -62,10 +83,11 @@ class Basket extends Component
     }
 
     public function deleteItem($id){
+        $this->summ=0;
         if(OrderItem::destroy($id)){
             $this->emit("updateCounter");
             if(Session::get('user_id')){
-                if (OrderItem::query()->where('user_id',Session::get('user_id') )->count()){
+                if (OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->count()){
                     $this->isOrders=true;
                     $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->get();
                     if(OrderItem::query()->where('user_id',Session::get('user_id') )->get()){
@@ -74,6 +96,15 @@ class Basket extends Component
                         }
                         $this->orders=Product::query()->whereIn('id', $this->arrOrders)->get();
                         $this->count = OrderItem::all();
+                    }
+                    foreach ($orders as $order){
+                        foreach ($this->orders as $product){
+                            if($product->id == $order->product_id){
+                                $this->summ+=($product->discount)
+                                    ? ($product->price-($product->price*$product->discount)/100) * $order->quantity
+                                    :  $product->price*$order->quantity;
+                            }
+                        }
                     }
                 }
                 else{
@@ -85,9 +116,10 @@ class Basket extends Component
         }
     }
     public function update(){
+        $this->summ=0;
         $this->hidden=true;
         if(Session::get('user_id')){
-            if (OrderItem::query()->where('user_id',Session::get('user_id') )->count()){
+            if (OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->count()){
                 $this->isOrders=true;
                 $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->get();
                 if(OrderItem::query()->where('user_id',Session::get('user_id') )->get()){
@@ -96,6 +128,15 @@ class Basket extends Component
                     }
                     $this->orders=Product::query()->whereIn('id', $this->arrOrders)->get();
                     $this->count = OrderItem::all();
+                }
+                foreach ($orders as $order){
+                    foreach ($this->orders as $product){
+                        if($product->id == $order->product_id){
+                            $this->summ+=($product->discount)
+                                ? ($product->price-($product->price*$product->discount)/100) * $order->quantity
+                                :  $product->price*$order->quantity;
+                        }
+                    }
                 }
             }
             else{

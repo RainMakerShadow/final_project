@@ -65,11 +65,13 @@ class Shop extends Component
             $user_id = Session::get('user_id');
         }
         $orderItem=OrderItem::where('product_id', $product_id)->first();
+
         if(!$orderItem){
             OrderItem::create([
                 'user_id'=>$user_id,
                 'product_id'=>$product_id,
                 'quantity'=>1,
+                'done'=> false,
             ]);
         }
         else{

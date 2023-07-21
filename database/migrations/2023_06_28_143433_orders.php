@@ -15,7 +15,7 @@ class Orders extends Migration
     {
         Schema::create('orders', function (Blueprint $table){
            $table->id();
-           $table->integer('user_id');
+           $table->string('user_id');
            $table->string('first_name',50);
            $table->string('last_name', 50);
            $table->string('email',50);
@@ -24,6 +24,7 @@ class Orders extends Migration
            $table->decimal('amount', 10, 2);
            $table->string('delivery_serv',50);
            $table->text('comment')->nullable();
+           $table->boolean('done')->nullable();
            $table->timestamps();
 
            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
