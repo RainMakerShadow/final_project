@@ -64,7 +64,7 @@ class Shop extends Component
         } else {
             $user_id = Session::get('user_id');
         }
-        $orderItem=OrderItem::where('product_id', $product_id)->first();
+        $orderItem=OrderItem::where('product_id', $product_id)->where('done',0)->first();
 
         if(!$orderItem){
             OrderItem::create([
@@ -72,13 +72,14 @@ class Shop extends Component
                 'product_id'=>$product_id,
                 'quantity'=>1,
                 'done'=> false,
+                'order_id'=> 0,
             ]);
         }
         else{
             $orderItem->quantity+=1;
             $orderItem->save();
         }
-        $this->emit("updateOrders");
+        //$this->emit("updateOrders");
         $this->emit("updateCounter");
     }
 

@@ -53,6 +53,7 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/dashboard/orders', Orders::class)->name('orders');
+    Route::get('/dashboard/orders/views/{id}', Orders::class)->name('orders.show');
 //      user routs
     Route::get('dashboard/users', Users\ShowUsers::class)->name('user.show');
     Route::get('dashboard/user/{id}/edit', Users\EditUser::class)->name('user.edit');

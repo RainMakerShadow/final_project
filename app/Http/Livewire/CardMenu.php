@@ -24,9 +24,10 @@ class CardMenu extends Component
         if(Session::get('user_id')){
             $this->ifOrders=OrderItem::query()->where('user_id', Session::get('user_id'))->where('done', false)->count();
         }
-        //$this->emit("updateOrders");
     }
-
+    public function updateBasket(){
+        $this->emit("updateOrders");
+    }
     public function render()
     {
         return view('livewire.card-menu');

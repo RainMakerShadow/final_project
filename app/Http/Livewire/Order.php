@@ -122,9 +122,8 @@ class Order extends Component
                     }
                 }
             }
-            //dd(number_format($summ,2,'.',' '));
 
-            \App\Models\Order::create([
+            $new_id=\App\Models\Order::create([
                 'user_id' => Session::get('user_id'),
                 'first_name'=> $this->first_name,
                 'last_name' => $this->last_name,
@@ -137,6 +136,7 @@ class Order extends Component
             ]);
             foreach ($orders as $order){
                 $order->done=true;
+                $order->order_id=$new_id->id;
                 $order->save();
             }
         }

@@ -14,7 +14,7 @@ class Basket extends Component
     public $orders;
     public $count;
     public $message;
-    public $hidden=true;
+    public $hidden='fixed top-0 left-0 right-0 z-50 hidden -full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full';
     public $summ;
 
     protected $listeners = ['updateOrders'=>'update'];
@@ -24,14 +24,15 @@ class Basket extends Component
         if(Session::get('user_id')){
             if (OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->count()){
                 $this->isOrders=true;
-                $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->get();
-                if(OrderItem::query()->where('user_id',Session::get('user_id') )->get()){
+                $orders=OrderItem::query()->where('user_id',Session::get('user_id'))->where('done', false)->get();
+                if(OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get()){
                     foreach ($orders as $order){
                         $this->arrOrders[]=$order->product_id;
                     }
                     $this->orders=Product::query()->whereIn('id', $this->arrOrders)->get();
-                    $this->count = OrderItem::all();
+                    $this->count = OrderItem::query()->where('user_id',Session::get('user_id'))->where('done', false)->get();
                 }
+
                 foreach ($orders as $order){
                     foreach ($this->orders as $product){
                         if($product->id == $order->product_id){
@@ -56,13 +57,13 @@ class Basket extends Component
         if(Session::get('user_id')){
             if (OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->count()){
                 $this->isOrders=true;
-                $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->get();
-                if(OrderItem::query()->where('user_id',Session::get('user_id') )->get()){
+                $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get();
+                if(OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get()){
                     foreach ($orders as $order){
                         $this->arrOrders[]=$order->product_id;
                     }
                     $this->orders=Product::query()->whereIn('id', $this->arrOrders)->get();
-                    $this->count = OrderItem::all();
+                    $this->count = OrderItem::query()->where('user_id',Session::get('user_id'))->where('done', false)->get();
                 }
                 foreach ($orders as $order){
                     foreach ($this->orders as $product){
@@ -77,25 +78,26 @@ class Basket extends Component
             else{
                 $this->message="Ваш кошик порожній...";
             }
+            $this->hidden='fixed top-0 left-0 right-0 z-50 -full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center flex ';
+            $this->render();
         }
-        $this->hidden=false;
-        $this->render();
     }
 
     public function deleteItem($id){
+        //$this->hidden='fixed top-0 left-0 right-0 z-50 -full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center flex ';
         $this->summ=0;
         if(OrderItem::destroy($id)){
             $this->emit("updateCounter");
             if(Session::get('user_id')){
                 if (OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->count()){
                     $this->isOrders=true;
-                    $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->get();
-                    if(OrderItem::query()->where('user_id',Session::get('user_id') )->get()){
+                    $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get();
+                    if(OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get()){
                         foreach ($orders as $order){
                             $this->arrOrders[]=$order->product_id;
                         }
                         $this->orders=Product::query()->whereIn('id', $this->arrOrders)->get();
-                        $this->count = OrderItem::all();
+                        $this->count = OrderItem::query()->where('user_id',Session::get('user_id'))->where('done', false)->get();
                     }
                     foreach ($orders as $order){
                         foreach ($this->orders as $product){
@@ -111,23 +113,22 @@ class Basket extends Component
                     $this->message="Ваш кошик порожній...";
                 }
             }
-            $this->hidden=false;
-            $this->render();
         }
+        $this->mount();
     }
     public function update(){
+        $this->hidden='fixed top-0 left-0 right-0 z-50 -full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full justify-center items-center flex ';
         $this->summ=0;
-        $this->hidden=true;
         if(Session::get('user_id')){
             if (OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->count()){
                 $this->isOrders=true;
-                $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->get();
-                if(OrderItem::query()->where('user_id',Session::get('user_id') )->get()){
+                $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get();
+                if(OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get()){
                     foreach ($orders as $order){
                         $this->arrOrders[]=$order->product_id;
                     }
                     $this->orders=Product::query()->whereIn('id', $this->arrOrders)->get();
-                    $this->count = OrderItem::all();
+                    $this->count = OrderItem::query()->where('user_id',Session::get('user_id'))->where('done', false)->get();
                 }
                 foreach ($orders as $order){
                     foreach ($this->orders as $product){
@@ -138,12 +139,12 @@ class Basket extends Component
                         }
                     }
                 }
+               $this->render();
             }
             else{
                 $this->message="Ваш кошик порожній...";
             }
         }
-        $this->render();
     }
 
     public function redirectTo(){
