@@ -25,6 +25,7 @@ class Orders extends Migration
            $table->string('delivery_serv',50);
            $table->text('comment')->nullable();
            $table->boolean('done')->nullable();
+           $table->string('status');
            $table->timestamps();
 
            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();

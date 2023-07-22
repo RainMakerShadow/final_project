@@ -11,7 +11,7 @@ class CardMenu extends Component
 {
     public $ifOrders;
 
-    protected $listeners = ['updateCounter'=>'count'];
+    protected $listeners = ['updateCounter'=>'count','updateCounterDelete'=>'countDelete'];
 
     public function mount()
     {
@@ -23,10 +23,16 @@ class CardMenu extends Component
     public function count(){
         if(Session::get('user_id')){
             $this->ifOrders=OrderItem::query()->where('user_id', Session::get('user_id'))->where('done', false)->count();
+            $this->emit("updateOrders");
+        }
+    }
+    public function countDelete(){
+        if(Session::get('user_id')){
+            $this->ifOrders=OrderItem::query()->where('user_id', Session::get('user_id'))->where('done', false)->count();
         }
     }
     public function updateBasket(){
-        $this->emit("updateOrders");
+        $this->emit("updateOrdersWithClass");
     }
     public function render()
     {

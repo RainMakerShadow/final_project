@@ -74,13 +74,12 @@ class Shop extends Component
                 'done'=> false,
                 'order_id'=> 0,
             ]);
+            $this->emit("updateCounter");
         }
         else{
             $orderItem->quantity+=1;
             $orderItem->save();
         }
-        //$this->emit("updateOrders");
-        $this->emit("updateCounter");
     }
 
     public function render()

@@ -1371,6 +1371,10 @@ select {
   margin-left: 1.5rem;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .mr-1 {
   margin-right: 0.25rem;
 }
@@ -1515,10 +1519,6 @@ select {
   height: 2.25rem;
 }
 
-.h-\[calc\(100\%-1rem\)\] {
-  height: calc(100% - 1rem);
-}
-
 .h-auto {
   height: auto;
 }
@@ -1542,10 +1542,6 @@ select {
 
 .max-h-40 {
   max-height: 10rem;
-}
-
-.max-h-full {
-  max-height: 100%;
 }
 
 .min-h-screen {
@@ -1816,10 +1812,6 @@ select {
   align-content: center;
 }
 
-.items-start {
-  align-items: flex-start;
-}
-
 .items-center {
   align-items: center;
 }
@@ -1945,10 +1937,6 @@ select {
   overflow-y: auto;
 }
 
-.overflow-x-hidden {
-  overflow-x: hidden;
-}
-
 .overflow-y-hidden {
   overflow-y: hidden;
 }
@@ -1989,14 +1977,29 @@ select {
   border-bottom-left-radius: 0px;
 }
 
+.rounded-l-lg {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
 .rounded-l-md {
   border-top-left-radius: 0.375rem;
   border-bottom-left-radius: 0.375rem;
 }
 
+.rounded-r-lg {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
 .rounded-r-md {
   border-top-right-radius: 0.375rem;
   border-bottom-right-radius: 0.375rem;
+}
+
+.rounded-t {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }
 
 .rounded-t-none {
@@ -2195,6 +2198,14 @@ select {
 
 .p-0\.5 {
   padding: 0.125rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
+}
+
+.p-1\.5 {
+  padding: 0.375rem;
 }
 
 .p-2 {
@@ -3436,6 +3447,10 @@ select {
     grid-column: span 10 / span 10;
   }
 
+  .sm\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
   .sm\:col-span-4 {
     grid-column: span 4 / span 4;
   }
@@ -3465,6 +3480,10 @@ select {
 
   .sm\:mb-0 {
     margin-bottom: 0px;
+  }
+
+  .sm\:mb-5 {
+    margin-bottom: 1.25rem;
   }
 
   .sm\:ml-10 {
@@ -3552,6 +3571,10 @@ select {
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
+  .sm\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3600,6 +3623,10 @@ select {
     border-top-right-radius: 0.375rem;
   }
 
+  .sm\:p-5 {
+    padding: 1.25rem;
+  }
+
   .sm\:p-6 {
     padding: 1.5rem;
   }
@@ -3643,10 +3670,6 @@ select {
 }
 
 @media (min-width: 768px) {
-  .md\:inset-0 {
-    inset: 0px;
-  }
-
   .md\:order-1 {
     order: 1;
   }
@@ -3693,6 +3716,10 @@ select {
 
   .md\:hidden {
     display: none;
+  }
+
+  .md\:h-auto {
+    height: auto;
   }
 
   .md\:w-60 {

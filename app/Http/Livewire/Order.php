@@ -133,6 +133,7 @@ class Order extends Component
                 'address' => $this->select_city.", ".$this->select_department,
                 'comment' => $this->comment,
                 'amount' => $summ,
+                'status'=>"Нове замовлення",
             ]);
             foreach ($orders as $order){
                 $order->done=true;
