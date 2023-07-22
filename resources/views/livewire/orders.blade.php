@@ -153,7 +153,7 @@
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form action="#">
+                <form wire:submit.prevent="submit">
                     <div class="grid gap-4 mb-4 sm:grid-cols-2">
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Прізвище та ім'я</label>
@@ -169,7 +169,7 @@
                         </div>
                         <div>
                             <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Статус замовлення</label>
-                            <select wire:model="status" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <select wire:change="onChange" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option selected="">Нове замовлення</option>
                                 <option value="PH">В обробці</option>
                                 <option value="TV">Кліент не підтвердив замовлення</option>
@@ -184,7 +184,7 @@
                         </div>
                         <div class="sm:col-span-2">
                             <label for="comment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Коментар</label>
-                            <textarea wire:modal="modal_comment" id="comment" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="">{{$modal_comment}}</textarea>
+                            <textarea wire:model="modal_comment" id="comment" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="">{{$modal_comment}}</textarea>
                         </div>
                     </div>
                     <div class="grid gap-4 mb-4 sm:grid-cols-1">
@@ -210,8 +210,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+
+
                                 @foreach($order_modal as $item)
-                                    <tr class="bg-white dark:bg-gray-800">
+                                    <tr wire:key="item_{{ $item->id }}" class="bg-white dark:bg-gray-800">
                                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{$item->title}}
                                         </th>

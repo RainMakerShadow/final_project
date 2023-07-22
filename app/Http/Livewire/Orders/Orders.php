@@ -28,6 +28,8 @@ class Orders extends Component
     public $modal_address;
     public $modal_status;
 
+    public $item_id;
+
     public function mount(){
         $this->orders=Order::all();
         $currentRoute = Route::current();
@@ -58,31 +60,20 @@ class Orders extends Component
         $this->modal_summ=0;
         $this->modal_qty=0;
         $this->order_modal=Order::query()->join('orders_items', 'orders.id','=','orders_items.order_id')->join('products','orders_items.product_id', '=', 'products.id')->select('orders.*', 'orders_items.*', 'products.price', 'products.title', 'products.discount')->where('orders.id', $id)->get();
-        //dd($this->order_modal);
         $this->modal_client_name=$this->order_modal[0]->last_name." ".$this->order_modal[0]->first_name;
         $this->modal_email=$this->order_modal[0]->email;
         $this->modal_phone=$this->order_modal[0]->phone_number;
         $this->modal_comment=$this->order_modal[0]->comment;
         $this->modal_address=$this->order_modal[0]->address;
         $this->modal_status=$this->order_modal[0]->status;
+
         foreach ($this->order_modal as $item){
             $this->modal_summ+=($item->price-(($item->price*$item->discount)/100))*$item->quantity;
             $this->modal_qty+=$item->quantity;
         }
-
-
-
         $this->hidden='overflow-y-auto overflow-x-auto fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full flex';
-        $this->render();
+        $this->item_id=$id;
     }
-
-
-
-
-
-
-
-
 
     public function handleInput(){ //поиск
         $name=$this->search;
@@ -110,8 +101,12 @@ class Orders extends Component
         }
 
     }
+
     public function render()
     {
+//        if($this->item_id){
+//         $this->onClick($this->item_id);
+//        }
         return view('livewire.orders')->layout('layouts.admin');
     }
 }
