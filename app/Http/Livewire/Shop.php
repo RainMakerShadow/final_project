@@ -15,6 +15,10 @@ class Shop extends Component
 {
     public $category;
     public $products;
+    public $productInfo;
+    public $product_id;
+
+    public $hidden='hidden overflow-y-auto overflow-x-auto fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full';
 
     public function mount(Request $request){
         $priceMin = $request->session()->get('priceMin');
@@ -56,6 +60,13 @@ class Shop extends Component
 
     }
 
+    public function showProduct($id){
+
+        $this->product_id=$id;
+        $this->hidden='overflow-y-auto overflow-x-auto fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full flex';
+        $this->render();
+    }
+
     public function submit($product_id){
 
         if (!Session::has('user_id')) {
@@ -84,7 +95,15 @@ class Shop extends Component
 
     public function render()
     {
+        if($this->product_id){
+            $this->productInfo=Product::find($this->product_id);
+            $this->hidden='overflow-y-auto overflow-x-auto fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full flex';
+        }
+        else{
+            $this->hidden='hidden overflow-y-auto overflow-x-auto fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full flex';
+        }
         $products=$this->products;
-        return view('livewire.shop', compact('products'));
+        $productItem=$this->productInfo;
+        return view('livewire.shop', compact('products', 'productItem'));
     }
 }
