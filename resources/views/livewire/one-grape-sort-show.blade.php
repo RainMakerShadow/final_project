@@ -1,13 +1,13 @@
 <div>
-    <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 mb-3 lg:m-10">
+    <main class="pt-0 pb-16 lg:pt-1 lg:pb-24 bg-white dark:bg-gray-900 mb-3 lg:m-10">
         <div class="flex justify-between px-1 sm:px-4 mx-auto max-w-screen-xl ">
-            <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+            <article class="mx-auto w-full max-w-5xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
                 <header class="mb-4 lg:mb-6 not-format">
                     <h1 class="mb-4 text-2xl font-extrabold text-center leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{{$grape[0]->title}}</h1>
                 </header>
                 <p class=" text-sm sm:text-2xl lead dark:text-white text-black">{{$grape[0]->content}}</p>
-                <figure class="m-10"><img src="{{ Illuminate\Support\Facades\Storage::url('image/grapes/'.$grape[0]->img) }}" alt="{{$grape[0]->img_alt}}">
-                    <figcaption class="text-sm sm:text-2xl lead dark:text-white text-black">{{$grape[0]->img_descr}}</figcaption>
+                <figure class="mt-10 text-center m-auto"><img class="text-center m-auto" src="{{ Illuminate\Support\Facades\Storage::url('image/grapes/'.$grape[0]->img) }}" alt="{{$grape[0]->img_alt}}">
+                    <figcaption class="text-sm sm:text-3xl lead dark:text-white text-black">{{$grape[0]->img_descr}}</figcaption>
                 </figure>
             </article>
         </div>

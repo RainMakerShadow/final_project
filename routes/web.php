@@ -53,7 +53,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/news/{slug?}', NewsShow::class)->name('news-show.page');
     Route::get('/news/{slug?}/{url?}', OneNewsShow::class)->name('one-news-show.page');
     Route::get('/sorti-vinogradu', GrapesSortShow::class)->name('grapes-sort-show.page');
-    Route::get('/sorti-vinogradu/{slug?}', OneGrapeSortShow::class)->name('one-grapes-sort-show.page');
+    Route::get('/sorti-vinogradu/{url?}', OneGrapeSortShow::class)->name('one-grapes-sort-show.page');
 
 
 });
