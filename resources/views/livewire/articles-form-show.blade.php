@@ -2,7 +2,7 @@
         <section class="bg-white dark:bg-gray-900">
             <div class="px-4 mx-auto max-w-screen-xl lg:py-6 lg:px-6">
                 <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-                    <h2 class="mb-4 text:base lg:text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white text-transparent bg-clip-text bg-gradient-to-r to-stone-700 from-slate-500" >{{$articleCategory[0]->title}}</h2>
+                    <h2 class="mb-4 text:base lg:text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white text-transparent bg-clip-text bg-gradient-to-r to-stone-700 from-slate-500" >{{(count($articleCategory)==1)?$articleCategory[0]->title:''}}</h2>
                 </div>
                 @for($i=0; $i<count($articles); $i++)
                     @if($i % 2 == 0)

@@ -84,6 +84,7 @@ class Order extends Component
                 "calledMethod"=> "getWarehouses",
                 "methodProperties"=>[
                     'CityName'=>$this->select_city,
+                    //'CategoryOfWarehouse' => 'Postomat',
                 ],
             ];
 

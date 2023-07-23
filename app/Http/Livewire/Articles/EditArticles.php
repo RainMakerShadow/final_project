@@ -93,7 +93,7 @@ class EditArticles extends Component
             $this->validate([
                 'image' => 'required|file|max:4096',
             ]);
-            (new UpLoadImage)->UpLoadImage('public/image/articles-categories', $transLiterate['file_name'], $this->image);
+            (new UpLoadImage)->UpLoadImage('public/image/articles', $transLiterate['file_name'], $this->image);
         }
         foreach ($this->category_selected as $item ){
             if ($item->id == $this->category){

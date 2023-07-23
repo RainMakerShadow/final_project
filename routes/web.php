@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Livewire\GrapeSort;
 use App\Http\Livewire\ArticlesFormShow;
 use App\Http\Livewire\ArticleFormShow;
+use App\Http\Livewire\NewsShow;
+use App\Http\Livewire\OneNewsShow;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Users;
 use App\Http\Livewire\Products;
@@ -45,6 +48,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/order', Order::class)->name('order.page');
     Route::get('/articles/{slug?}', ArticlesFormShow::class)->name('articles-form-show.page');
     Route::get('/articles/{slug?}/{url?}', ArticleFormShow::class)->name('article-form-show.page');
+    Route::get('/news/{slug?}', NewsShow::class)->name('news-show.page');
+    Route::get('/news/{slug?}/{url?}', OneNewsShow::class)->name('one-news-show.page');
 
 
 });
@@ -112,5 +117,10 @@ Route::middleware([
     Route::get('/gallery/add', Gallery\AddGallery::class)->name('gallery.add');
     Route::get('/gallery/delete{toDelete}', Gallery\DeleteGallery::class)->name('gallery.delete');
 
+//      grapes sort routs
+    Route::get('/grapes-sort', GrapeSort\Show::class)->name('grapes-sort.show');
+    Route::get('/grapes-sort/{id}/edit', App\Http\Livewire\GrapeSort\Edit::class)->name('grapes-sort.edit');
+    Route::get('/grapes-sort/add', App\Http\Livewire\GrapeSort\Add::class)->name('grapes-sort.add');
+    Route::get('/grapes-sort/delete{toDelete}', App\Http\Livewire\GrapeSort\Delete::class)->name('grapes-sort.delete');
 // logout user
 });
