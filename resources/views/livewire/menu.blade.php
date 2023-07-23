@@ -2,7 +2,7 @@
 
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="grid grid-cols-12 mx-auto max-w-screen-xl p-4 pb-0">
-            <div class="mr-3 sm:col-span-10 col-span-8 text-gray-500 dark:text-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+            <div class="mr-3 sm:col-span-7 col-span-6 text-gray-500 dark:text-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
                 <a href="tel:5541251234" class="mr-6 text-sm text-gray-500 dark:text-white hover:underline">(067) 490-28-42</a>
             </div>
             <div class="sm:m-2 sm:col-span-1 col-span-2">
@@ -13,6 +13,51 @@
             </div>
             <div class="sm:m-2 sm:col-span-1 col-span-2">
                 <livewire:card-menu />
+            </div>
+            <div  class="sm:m-2 sm:col-span-2 col-span-4 sm:mt-3 mb-5">
+                <div class="flex items-center md:order-2 sm:mt-1">
+
+                    <!-- Dropdown menu -->
+                    @auth
+                        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+                            <div class="px-4 py-3">
+                                <span class="block text-sm text-gray-900 dark:text-white">{{ Auth::user()->name }}</span>
+                                <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ Auth::user()->email }}</span>
+                            </div>
+                            <ul class="py-2" aria-labelledby="user-menu-button">
+                                <li>
+                                    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" href="{{ route('orders') }}" :active="request()->routeIs('profile.show')">
+                                        {{ __('Панель керування') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" x-data>
+                                        @csrf
+
+                                        <button href="{{ route('logout') }}" class="">
+                                            Вихід
+                                        </button>
+                                    </form>
+
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
+                    @if (Route::has('login'))
+                        @auth
+                            <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="w-8 h-8 rounded-full" src="{{ Illuminate\Support\Facades\Storage::url('image/users/'.Auth::user()->profile_photo_path)}}" alt="user photo">
+                            </button>
+                        @else
+                            <a href="{{ route('login') }}" class="py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center">Вхід</a>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Реєстрація</a>
+                            @endif
+                        @endif
+                    @endif
+
+                </div>
             </div>
         </div>
     </nav>
@@ -309,49 +354,7 @@
                 </svg>
                 <span class="self-center text-2xl m-3 text-black font-semibold whitespace-nowrap dark:text-white">{{strtoupper(config('app.name'))}}</span>
             </a>
-            <div class="flex items-center md:order-2">
 
-                <!-- Dropdown menu -->
-                @auth
-                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
-                        <div class="px-4 py-3">
-                            <span class="block text-sm text-gray-900 dark:text-white">{{ Auth::user()->name }}</span>
-                            <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ Auth::user()->email }}</span>
-                        </div>
-                        <ul class="py-2" aria-labelledby="user-menu-button">
-                            <li>
-                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" href="{{ route('orders') }}" :active="request()->routeIs('profile.show')">
-                                    {{ __('Панель керування') }}
-                                </a>
-                            </li>
-                            <li>
-                                <form method="POST" action="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" x-data>
-                                    @csrf
-
-                                    <button href="{{ route('logout') }}" class="">
-                                        Вихід
-                                    </button>
-                                </form>
-
-                            </li>
-                        </ul>
-                    </div>
-                @endif
-                @if (Route::has('login'))
-                    @auth
-                        <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                            <span class="sr-only">Open user menu</span>
-                            <img class="w-8 h-8 rounded-full" src="{{ Illuminate\Support\Facades\Storage::url('image/users/'.Auth::user()->profile_photo_path)}}" alt="user photo">
-                        </button>
-                    @else
-                        <a href="{{ route('login') }}" class="py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center">Вхід</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Реєстрація</a>
-                        @endif
-                    @endif
-                @endif
-
-            </div>
 
             <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="navbar-user">
                 <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-100 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-gray-100 dark:bg-gray-600 md:dark:bg-gray-600 dark:border-gray-700">

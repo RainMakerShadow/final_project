@@ -53,7 +53,7 @@ class Add extends Component
             'img_descr' => (!$this->img_descr)?$this->img_title:$this->img_descr,
             'description' => ($this->description)?:$this->title,
             'keywords' => ($this->keywords)?:$this->title,
-            'link' => $this->link,
+            'link' => '/sorti-vinogradu'.$this->link,
             'content' => $this->content,
 
         ]);

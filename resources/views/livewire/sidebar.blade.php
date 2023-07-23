@@ -34,7 +34,7 @@
                     <h6 class="text-base font-medium text-black dark:text-white">
                         Ціна
                     </h6>
-                    <div class="flex items-center justify-between col-span-2 space-x-3">
+                    <div class="flex items-center justify-between flex-col lg:flex-row space-x-3">
                         <div class="w-full">
                             <label for="min-experience-input"
                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -46,7 +46,7 @@
                                    placeholder="" required>
                         </div>
 
-                        <div class="w-full">
+                        <div class="w-full mt-3">
                             <label for="price-to"
                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 До
