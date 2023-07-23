@@ -361,12 +361,12 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                 </svg></button>
                             <!-- Dropdown menu -->
-                            <div id="dropdownNavbar-{{$item->id}}" class="z-10 hidden font-normal bg-gray-100 divide-y divide-gray-300 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400 block px-4 py-2 hover:bg-gray-200 hover:rounded dark:hover:bg-gray-500 dark:text-gray-400" aria-labelledby="dropdownLargeButton-{{$item->id}}">
+                            <div id="dropdownNavbar-{{$item->id}}" class="z-10 hidden font-normal bg-gray-100 divide-y divide-gray-300 rounded-lg shadow w-80 dark:bg-gray-700 dark:divide-gray-600">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton-{{$item->id}}">
                                     @foreach($articlesCategories as $articleCategory)
                                         @if($articleCategory->menus_id == $item->id)
-                                            <li>
-                                                <a href="{{$articleCategory->link}}">
+                                            <li class="{{($articleCategory->link == '/'.request()->route()->uri()) ? 'cursor-default mt-2 mb-2 block ml-4 py-2 rounded text-gray-400 bg-gray-400 dark:bg-gray-700 md:bg-transparent md:text-gray-300 md:p-0 hover:rounded md:dark:text-gray-600':'block px-4 py-2 text-gray-700 hover:rounded hover:bg-gray-200 bg-gray-100 dark:hover:bg-gray-500 dark:text-gray-400 dark:bg-gray-700 cursor-pointer'}}">
+                                                <a href="{{$articleCategory->link}}" style="{{($articleCategory->link == '/'.request()->route()->uri()) ? 'pointer-events: none;' :''}}" class="block">
                                                     {{$articleCategory->title}}
                                                 </a>
                                             </li>
@@ -382,12 +382,12 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                 </svg></button>
                             <!-- Dropdown menu -->
-                            <div id="dropdownNavbar-{{$item->id}}" class="z-10 hidden font-normal bg-gray-100 divide-y divide-gray-300 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            <div id="dropdownNavbar-{{$item->id}}" class="z-10 hidden font-normal bg-gray-100 divide-y divide-gray-300 rounded-lg shadow w-80 dark:bg-gray-700 dark:divide-gray-600">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton-{{$item->id}}">
                                     @foreach($productsCategories as $productCategory)
                                         @if($productCategory->menus_id==$item->id)
                                             <li class="{{($productCategory->link == '/'.request()->route()->uri()) ? 'cursor-default mt-2 mb-2 block ml-4 py-2 rounded text-gray-400 bg-gray-400 dark:bg-gray-700 md:bg-transparent md:text-gray-300 md:p-0 hover:rounded md:dark:text-gray-600':'block px-4 py-2 text-gray-700 hover:rounded hover:bg-gray-200 bg-gray-100 dark:hover:bg-gray-500 dark:text-gray-400 dark:bg-gray-700 cursor-pointer'}}">
-                                                <a href="{{$productCategory->link}}" style="{{($productCategory->link == '/'.request()->route()->uri()) ? 'pointer-events: none;' :''}}" >
+                                                <a href="{{$productCategory->link}}" style="{{($productCategory->link == '/'.request()->route()->uri()) ? 'pointer-events: none;' :''}}" class="block">
                                                     {{$productCategory->title}}
                                                 </a>
                                             </li>
@@ -403,14 +403,16 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                                 </svg></button>
                             <!-- Dropdown menu -->
-                            <div id="dropdownNavbar-{{$item->id}}" class="z-10 hidden font-normal bg-gray-100 divide-y divide-gray-300 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400 block px-4 py-2 hover:bg-gray-200 hover:rounded dark:hover:bg-gray-500 dark:text-gray-400" aria-labelledby="dropdownLargeButton-{{$item->id}}">
+                            <div id="dropdownNavbar-{{$item->id}}" class="z-10 hidden font-normal bg-gray-100 divide-y divide-gray-300 rounded-lg shadow w-80 dark:bg-gray-700 dark:divide-gray-600">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton-{{$item->id}}">
                                     @foreach($newsCategories as $newsCategory)
-                                        <li>
-                                            <a href="{{$newsCategory->link}}">
-                                                {{$newsCategory->title}}
-                                            </a>
-                                        </li>
+                                        @if($newsCategory->menus_id==$item->id)
+                                            <li class="{{($newsCategory->link == '/'.request()->route()->uri()) ? 'cursor-default mt-2 mb-2 block ml-4 py-2 rounded text-gray-400 bg-gray-400 dark:bg-gray-700 md:bg-transparent md:text-gray-300 md:p-0 hover:rounded md:dark:text-gray-600':'block px-4 py-2 text-gray-700 hover:rounded hover:bg-gray-200 bg-gray-100 dark:hover:bg-gray-500 dark:text-gray-400 dark:bg-gray-700 cursor-pointer'}}">
+                                                <a href="{{$newsCategory->link}}" style="{{($newsCategory->link == '/'.request()->route()->uri()) ? 'pointer-events: none;' :''}}" class="block">
+                                                    {{$newsCategory->title}}
+                                                </a>
+                                            </li>
+                                        @endif
                                     @endforeach
                                 </ul>
                                 <div class="py-1 hover:bg-gray-200 dark:hover:bg-gray-500 hover:rounded">

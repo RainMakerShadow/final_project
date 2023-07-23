@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\ArticlesFormShow;
+use App\Http\Livewire\ArticleFormShow;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Users;
 use App\Http\Livewire\Products;
@@ -13,7 +15,6 @@ use App\Http\Livewire\Gallery;
 use App\Http\Livewire\Index;
 use App\Http\Livewire\Shop;
 use App\Http\Livewire\Order;
-use App\Http\Livewire\Policy;
 use App\Http\Livewire\Orders\Orders;
 
 
@@ -42,7 +43,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/shop/sadzhanci-vinogradu', Shop::class)->name('sadzhanci-vinogradu.page');
     Route::get('/shop/vinograd', Shop::class)->name('vinograd.page');
     Route::get('/order', Order::class)->name('order.page');
-    //Route::get('/order', Order::class)->name('Order.page');
+    Route::get('/articles/{slug?}', ArticlesFormShow::class)->name('articles-form-show.page');
+    Route::get('/articles/{slug?}/{url?}', ArticleFormShow::class)->name('article-form-show.page');
+
+
 });
 
 

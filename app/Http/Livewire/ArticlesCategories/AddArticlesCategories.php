@@ -38,7 +38,7 @@ class AddArticlesCategories extends Component
     public function handleInputTitle(){
 
         $this->transLiterate= (new Transliterate)->transLiterate($this->title);
-        $this->link='/'.strtolower($this->transLiterate['file_name']);
+        $this->link=strtolower($this->transLiterate['file_name']);
 
     }
 
@@ -50,11 +50,7 @@ class AddArticlesCategories extends Component
 
         $this->validate();
         if($this->image) (new UpLoadImage)->upLoadImage('public/image/articles-categories', $this->transLiterate['file_name'], $this->image);
-        foreach ($this->menu as $item ){
-            if ($item->id == $this->selected){
-                $this->link=$item->link.$this->link;
-            }
-        }
+
         ArticleCategory::create([
             'title' => $this->title,
             'img_title' => $this->img_title,
