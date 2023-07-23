@@ -19,5 +19,6 @@ class GrapesSort extends Model
         'keywords',
         'link',
         'content',
+        'category_id',
     ];
 }

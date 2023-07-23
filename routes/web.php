@@ -19,6 +19,8 @@ use App\Http\Livewire\Index;
 use App\Http\Livewire\Shop;
 use App\Http\Livewire\Order;
 use App\Http\Livewire\Orders\Orders;
+use App\Http\Livewire\GrapesSortShow;
+use App\Http\Livewire\OneGrapeSortShow;
 
 
 /*
@@ -50,6 +52,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/articles/{slug?}/{url?}', ArticleFormShow::class)->name('article-form-show.page');
     Route::get('/news/{slug?}', NewsShow::class)->name('news-show.page');
     Route::get('/news/{slug?}/{url?}', OneNewsShow::class)->name('one-news-show.page');
+    Route::get('/sorti-vinogradu', GrapesSortShow::class)->name('grapes-sort-show.page');
+    Route::get('/sorti-vinogradu/{slug?}', OneGrapeSortShow::class)->name('one-grapes-sort-show.page');
 
 
 });

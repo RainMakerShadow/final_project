@@ -24,6 +24,7 @@ class GrapesSort extends Migration
             $table->string('description', 255)->nullable();
             $table->text('content');
             $table->string('link', 255);
+            $table->integer('category_id');
             $table->timestamps();
 
         });
