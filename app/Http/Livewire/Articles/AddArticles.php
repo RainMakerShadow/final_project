@@ -7,6 +7,7 @@ use App\Actions\MyActions\UpLoadImage;
 use App\Models\ArticleCategory;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Models\Article;
 
 class AddArticles extends Component
 {

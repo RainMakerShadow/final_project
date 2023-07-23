@@ -71,7 +71,7 @@ class Orders extends Component
             $this->modal_summ+=($item->price-(($item->price*$item->discount)/100))*$item->quantity;
             $this->modal_qty+=$item->quantity;
         }
-        $this->hidden='overflow-y-auto overflow-x-auto fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full flex';
+        $this->hidden='overflow-y-auto overflow-x-auto fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-modal md:h-full flex bg-blend-lighten';
         $this->item_id=$id;
     }
 
@@ -104,9 +104,6 @@ class Orders extends Component
 
     public function render()
     {
-//        if($this->item_id){
-//         $this->onClick($this->item_id);
-//        }
         return view('livewire.orders')->layout('layouts.admin');
     }
 }

@@ -10,12 +10,18 @@ use Livewire\Component;
 class ArticlesFormShow extends Component
 {
     public $articles;
+    public $articleCategory;
 
     public function mount(Request $request){
-        $this->counter=0;
         $url=$request->getPathInfo();
-        $articleCategory=ArticleCategory::where('link', $url)->get();
-        $this->articles=Article::where('category_id', $articleCategory[0]->id)->get();
+        $this->articleCategory=ArticleCategory::where('link', $url)->get();
+        if(count(ArticleCategory::where('link', $url)->get()->toArray())){
+            $this->articles=Article::where('category_id', $this->articleCategory[0]->id)->get();
+        }
+        else{
+            $this->articleCategory=ArticleCategory::all();
+            $this->articles=Article::all();
+        }
     }
     public function render()
     {

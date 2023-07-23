@@ -139,9 +139,10 @@
 
     <!-- Main modal -->
     <div id="defaultModal" tabindex="-1" aria-hidden="true" class="{{$hidden}}">
-        <div class="relative p-4 w-full max-w-2xl h-screen">
+        <div class="relative p-4 w-full max-w-2xl h-screen grow-1">
+
             <!-- Modal content -->
-            <div class="relative p-4 bg-gray-100 rounded-lg shadow-lg dark:shadow-gray-800/80 dark:bg-gray-800 sm:p-5 overflow-y-auto dark:shadow-md dark:shadow-gray-400/80">
+            <div class="relative p-4 bg-gray-100 rounded-lg shadow-lg dark:shadow-gray-800/80 dark:bg-gray-900 sm:p-5 overflow-y-auto dark:shadow-lg dark:shadow-white">
                 <!-- Modal header -->
                 <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
