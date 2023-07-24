@@ -132,6 +132,6 @@ class AddProduct extends Component
     public function render()
     {
         $categories=$this->categories;
-        return view('products.add-product', compact('categories'));
+        return view('products.add-product', compact('categories'))->layout('layouts.admin');
     }
 }
