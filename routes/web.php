@@ -21,6 +21,7 @@ use App\Http\Livewire\Order;
 use App\Http\Livewire\Orders\Orders;
 use App\Http\Livewire\GrapesSortShow;
 use App\Http\Livewire\OneGrapeSortShow;
+use App\Http\Livewire\Orders\Delete;
 
 
 /*
@@ -67,6 +68,7 @@ Route::middleware([
 
     Route::get('/dashboard/orders', Orders::class)->name('orders');
     Route::get('/dashboard/orders/views/{id}', Orders::class)->name('orders.show');
+    Route::get('/dashboard/orders/delete{toDelete}', Delete::class)->name('orders.delete');
 //      user routs
     Route::get('dashboard/users', Users\ShowUsers::class)->name('user.show');
     Route::get('dashboard/user/{id}/edit', Users\EditUser::class)->name('user.edit');

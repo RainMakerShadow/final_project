@@ -17,7 +17,7 @@
 {{--                        </li>--}}
 {{--                    </ul>--}}
                     <div class="py-1">
-                        <a href="{{route('products.delete', [implode(',', $toDelete)])}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white hover:rounded">Видалити замовлення</a>
+                        <a href="{{route('orders.delete', [implode(',', $toDelete)])}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white hover:rounded">Видалити замовлення</a>
                     </div>
                 </div>
             </div>
@@ -97,10 +97,9 @@
                 <tbody>
                 @foreach($orders as $order)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
                         <td class="w-4 p-4">
                             <div class="flex items-center">
-                                <input wire:click.prevent='check($event.target.dataset.id, $event.target.checked)' data-id="{{$order->id}}" id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {{$checkedAll}}>
+                                <input wire:click='check($event.target.dataset.id, $event.target.checked)' data-id="{{$order->id}}" id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {{$checkedAll}}>
                                 <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                             </div>
                         </td>
