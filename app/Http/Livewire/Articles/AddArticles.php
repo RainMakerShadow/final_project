@@ -64,7 +64,7 @@ class AddArticles extends Component
             'description' => ($this->description)?:$this->title,
             'keywords' => ($this->keywords)?:$this->title,
             'category_id' => $this->selected,
-            'link' => '/sorti-vinogradu'.$this->link,
+            'link' => $this->link,
             'content' => $this->content,
 
         ]);

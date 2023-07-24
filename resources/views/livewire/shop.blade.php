@@ -56,7 +56,7 @@
     </div>
 
     <div id="defaultModal-3" tabindex="-1" aria-hidden="true" class="{{$hidden}}">
-        <div class="relative p-4 w-full max-w-xl h-screen">
+        <div class="relative p-4 w-full max-w-lg h-screen">
             <!-- Modal content -->
             <div class="relative p-4 bg-gray-100 rounded-lg shadow-lg shadow-gray-400/50 dark:bg-gray-600 sm:p-5 overflow-y-auto ">
                 <!-- Modal header -->
@@ -73,8 +73,8 @@
                 <!-- Modal body -->
                     <div class="w-full bg-gray-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 pb-4">
                         <div class="m-auto p-3">
-                            <div class="rounded-lg overflow-hidden">
-                                <img class="w-full" src="{{Illuminate\Support\Facades\Storage::url('image/products/'.$productInfo->img)}}" alt="{{$productInfo->img_alt}}"/>
+                            <div class="rounded-lg overflow-hidden max-w-xs text-center  m-auto">
+                                <img class="" src="{{Illuminate\Support\Facades\Storage::url('image/products/'.$productInfo->img)}}" alt="{{$productInfo->img_alt}}"/>
                             </div>
                         </div>
                         <div class="px-5 pb-5">

@@ -12,7 +12,7 @@ class GrapesSortShow extends Component
 
     public function render()
     {
-        $this->paginate=GrapesSort::paginate(10);
+        $this->paginate=GrapesSort::paginate(4);
         return view('livewire.grapes-sort-show', ['paginate'=>$this->paginate]);
     }
 }

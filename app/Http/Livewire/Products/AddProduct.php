@@ -71,11 +71,12 @@ class AddProduct extends Component
 
     public function upLoadImage() //Сохранение файла на сервер
     {
-        $this->validate([
-            'image' => 'required|file|max:4096',
-        ]);
+//        $this->validate([
+//            //'image' => 'required|file|max:4096',
+//        ]);
 
-        $this->image->storeAs('/image/products/', $this->img_file_name.'.'.$this->image->getClientOriginalExtension()); // Путь, где будет сохранен файл
+        $this->image->storeAs('public/image/products', $this->img_file_name.'.'.$this->image->getClientOriginalExtension()); // Путь, где будет сохранен файл
+
 
 
     }
