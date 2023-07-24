@@ -1,5 +1,5 @@
 <div>
-    <div class="w-1/2 m-auto">
+    <div class="md:w-1/2 m-auto">
         <form wire:submit.prevent="submit">
             <h4 class="text-2xl text-black font-bold dark:text-white mb-6">Дані про отримувача</h4>
             <div class="grid md:grid-cols-2 md:gap-6">

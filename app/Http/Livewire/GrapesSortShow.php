@@ -8,14 +8,11 @@ use App\Models\GrapesSort;
 
 class GrapesSortShow extends Component
 {
-    public $grapes;
+    private $paginate=[];
 
-    public function mount(Request $request){
-        $url=$request->getPathInfo();
-        $this->grapes=GrapesSort::all();
-    }
     public function render()
     {
-        return view('livewire.grapes-sort-show');
+        $this->paginate=GrapesSort::paginate(10);
+        return view('livewire.grapes-sort-show', ['paginate'=>$this->paginate]);
     }
 }
