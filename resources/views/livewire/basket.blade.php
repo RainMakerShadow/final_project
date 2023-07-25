@@ -22,11 +22,11 @@
 
                             <thead class="text-xs text-white uppercase bg-gray-600 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="px-4 py-3 rounded-l-lg">Назва</th>
-                                <th scope="col" class="px-4 py-3">Ціна</th>
-                                <th scope="col" class="px-4 py-3">Кількість</th>
-                                <th scope="col" class="px-4 py-3">Сума</th>
-                                <th scope="col" class="px-4 py-3 rounded-r-lg">
+                                <th scope="col" class="px-1 py-2 rounded-l-lg text-center">Назва</th>
+                                <th scope="col" class="px-1 py-2 text-center">Ціна</th>
+                                <th scope="col" class="px-1 py-2 text-center">Кількість</th>
+                                <th scope="col" class="px-1 py-2 text-center">Сума</th>
+                                <th scope="col" class="px-1 py-2 rounded-r-lg">
                                     <span class="sr-only">Actions</span>
                                 </th>
                             </tr>
@@ -36,26 +36,38 @@
                                             <tr class="border-b dark:border-gray-700" id="{{$product->id}}">
                                     @foreach($count as $item)
                                         @if($item->product_id === $product->id )
-                                                <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$product->title}}&#34;</th>
-                                                <td class="px-4 py-3">
+                                                <th scope="row" class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">{{$product->title}}&#34;</th>
+                                                <td class="px-2 py-2 text-center">
                                                     @if($product->discount)
                                                         {{number_format($product->price-($product->price*$product->discount)/100, 2, '.', ' ')}}
                                                     @else{{number_format($product->price, 2, '.', ' ')}}
                                                     @endif
                                                 </td>
-                                                <td class="px-4 py-3">
-                                                    <input wire:change="inputClick($event.target.id, $event.target.value)" id="{{$product->id}}" name="{{$product->id}}" type="number" value="{{$item->quantity}}" class="w-16 h-10 rounded-lg">
+                                                <td class="px-2 py-2 text-center flex flex-row justify-items-center items-center justify-center">
+                                                    <button wire:click.prevent="qtyMinus($event.target.dataset.id, $event.target.dataset.value)" data-id="{{$product->id}}" data-value="{{$item->quantity}}" @if(!$item->quantity) disabled @endif class="text-center mr-2">
+                                                        <svg wire:click.prevent="qtyMinus($event.target.dataset.id, $event.target.dataset.value)" data-id="{{$product->id}}" data-value="{{$item->quantity}}" class="w-3 h-3 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                                                            <path wire:click.prevent="qtyMinus($event.target.dataset.id, $event.target.dataset.value)" data-id="{{$product->id}}" data-value="{{$item->quantity}}" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+                                                        </svg>
+                                                    </button>
+                                                    <input wire:change="inputClick($event.target.id)" id="{{$product->id}}" name="{{$product->id}}" type="number" value="{{$item->quantity}}" class="text-center p-0 sm:p-2 w-6 sm:w-16 h-10  rounded-lg">
+                                                    <button wire:click.prevent="qtyPlus($event.target.dataset.id, $event.target.dataset.value)" data-id="{{$product->id}}" data-value="{{$item->quantity}}" class="text-center ml-2">
+                                                        <svg wire:click.prevent="qtyPlus($event.target.dataset.id, $event.target.dataset.value)" data-id="{{$product->id}}" data-value="{{$item->quantity}}" class="w-3 h-3 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                                            <path wire:click.prevent="qtyPlus($event.target.dataset.id, $event.target.dataset.value)" data-id="{{$product->id}}" data-value="{{$item->quantity}}" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                                                        </svg>
+                                                    </button>
                                                 </td>
-                                                <td class="px-4 py-3">₴
+                                                <td class="px-2 py-2 text-center">₴
                                                     @if($product->discount)
                                                         {{number_format(($product->price-($product->price*$product->discount)/100)*$item->quantity, 2, '.', ' ')}}
                                                     @else
                                                         {{number_format($product->price*$item->quantity, 2, '.', ' ')}}
                                                     @endif
                                                 </td>
-                                                <td class="px-4 py-3 flex items-center justify-end">
-                                                    <button wire:click.prevent="deleteItem($event.target.dataset.id)" id="delete-{{$product->id}}" data-id="{{$item->id}}" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
-                                                        Видалити
+                                                <td class="px-1 py-2">
+                                                    <button wire:click.prevent="deleteItem($event.target.dataset.id)" id="delete-{{$product->id}}" data-id="{{$item->id}}" class="w-10 flex justify-items-center items-center justify-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
+                                                        <svg wire:click.prevent="deleteItem($event.target.dataset.id)" id="delete-{{$product->id}}" data-id="{{$item->id}}" class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                                            <path wire:click.prevent="deleteItem($event.target.dataset.id)" id="delete-{{$product->id}}" data-id="{{$item->id}}" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
+                                                        </svg>
                                                     </button>
                                                 </td>
                                         @endif
@@ -68,7 +80,7 @@
                                 <th scope="row" class="px-6 py-3 text-base">Всього</th>
                                 <td class="px-6 py-3"></td>
                                 <td class="px-6 py-3"></td>
-                                <td class="px-6 py-3">₴ {{number_format($summ,2,',',' ')}}</td>
+                                <td class="px-1 py-1">₴ {{number_format($summ,2,',',' ')}}</td>
                             </tr>
                             </tfoot>
                         </table>

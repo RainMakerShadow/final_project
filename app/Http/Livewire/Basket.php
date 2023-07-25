@@ -50,38 +50,77 @@ class Basket extends Component
         }
     }
 
-    public function inputClick($id, $value){
-        $this->orders=null;
-        $this->count=null;
-        $this->summ=0;
-        $orderItem=OrderItem::where('product_id', $id)->where('user_id',Session::get('user_id'))->where('done', false)->first();
-        $orderItem->quantity=$value;
-        $orderItem->save();
-        if(Session::get('user_id')){
-            if (OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->count()){
-                $this->isOrders=true;
-                $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get();
-                if(OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get()){
-                    foreach ($orders as $order){
-                        $this->arrOrders[]=$order->product_id;
+    public function qtyMinus($id, $value){
+        if($value){
+            $this->orders=null;
+            $this->count=null;
+            $this->summ=0;
+            $orderItem=OrderItem::where('product_id', $id)->where('user_id',Session::get('user_id'))->where('done', false)->first();
+            $orderItem->quantity=$value-1;
+            $orderItem->save();
+
+            if(Session::get('user_id')){
+                if (OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->count()){
+                    $this->isOrders=true;
+                    $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get();
+                    if(OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get()){
+                        foreach ($orders as $order){
+                            $this->arrOrders[]=$order->product_id;
+                        }
+                        $this->orders=Product::query()->whereIn('id', $this->arrOrders)->get();
+                        $this->count = OrderItem::query()->where('user_id',Session::get('user_id'))->where('done', false)->get();
                     }
-                    $this->orders=Product::query()->whereIn('id', $this->arrOrders)->get();
-                    $this->count = OrderItem::query()->where('user_id',Session::get('user_id'))->where('done', false)->get();
-                }
-                foreach ($orders as $order){
-                    foreach ($this->orders as $product){
-                        if($product->id == $order->product_id){
-                            $this->summ+=($product->discount)
-                                ? ($product->price-($product->price*$product->discount)/100) * $order->quantity
-                                :  $product->price*$order->quantity;
+                    foreach ($orders as $order){
+                        foreach ($this->orders as $product){
+                            if($product->id == $order->product_id){
+                                $this->summ+=($product->discount)
+                                    ? ($product->price-($product->price*$product->discount)/100) * $order->quantity
+                                    :  $product->price*$order->quantity;
+                            }
                         }
                     }
                 }
             }
-        }
-        $this->hidden='overflow-y-auto overflow-x-auto fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full flex';
+            $this->hidden='overflow-y-auto overflow-x-auto fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full flex';
 
-        $this->render();
+            $this->render();
+
+        }
+    }
+
+    public function qtyPlus($id, $value){
+            $this->orders=null;
+            $this->count=null;
+            $this->summ=0;
+            $orderItem=OrderItem::where('product_id', $id)->where('user_id',Session::get('user_id'))->where('done', false)->first();
+            $orderItem->quantity=$value+1;
+            $orderItem->save();
+
+            if(Session::get('user_id')){
+                if (OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->count()){
+                    $this->isOrders=true;
+                    $orders=OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get();
+                    if(OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->get()){
+                        foreach ($orders as $order){
+                            $this->arrOrders[]=$order->product_id;
+                        }
+                        $this->orders=Product::query()->whereIn('id', $this->arrOrders)->get();
+                        $this->count = OrderItem::query()->where('user_id',Session::get('user_id'))->where('done', false)->get();
+                    }
+                    foreach ($orders as $order){
+                        foreach ($this->orders as $product){
+                            if($product->id == $order->product_id){
+                                $this->summ+=($product->discount)
+                                    ? ($product->price-($product->price*$product->discount)/100) * $order->quantity
+                                    :  $product->price*$order->quantity;
+                            }
+                        }
+                    }
+                }
+            }
+            $this->hidden='overflow-y-auto overflow-x-auto fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full flex';
+
+            $this->render();
     }
 
     public function deleteItem($id){
