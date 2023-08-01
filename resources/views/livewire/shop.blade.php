@@ -7,7 +7,7 @@
                 @foreach($products as $product)
                     <form wire:submit.prevent="submit({{$product->id}})" id="{{$product->id}}">
                     <div class="">
-                        <a wire:click="showProduct($event.target.dataset.id)" data-id="{{$product->id}}" data-modal-toggle="defaultModal-3" class="group">
+                        <a wire:click.prevent="showProduct($event.target.dataset.id)" data-id="{{$product->id}}" data-modal-toggle="defaultModal-3" class="group">
     {{--                        <a href="{{route('product.link', $product->id)}}" class="group">--}}
                             <div class=" rounded-lg bg-gray-200 max-h-40 h-fit shadow-md dark:shadow-neutral-600 shadow-gray-800 relative">
                                 <img data-id="{{$product->id}}" src="{{Illuminate\Support\Facades\Storage::url('image/products/'.$product->img) }}" alt="{{$product->img}}" class="rounded-lg h-40 w-full object-cover object-center group-hover:opacity-75 ">
@@ -90,7 +90,7 @@
                         </div>
                         <div class="grid justify-items-center">
                             <button
-                                wire:click="submit({{$productItem->id}})"
+                                wire:click="Add({{$productItem->id}})"
                                 id="{{$product->id}}"
                                 type="submit"
                                 class="{{(!$product->available) ? ' text-center py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 shadow-sm dark:shadow-neutral-400/70 shadow-gray-400/50 ' : 'text-center py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 shadow-md hover:shadow dark:shadow-neutral-600/70 shadow-gray-800/50 focus:shadow-inner'}}"

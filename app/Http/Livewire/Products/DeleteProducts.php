@@ -12,8 +12,8 @@ class DeleteProducts extends Component
         foreach ($toDelete as $id){
             $user=Product::find($id);
             $user->delete();
-        }
 
+        }
         return redirect()->route('products.show');
 
     }

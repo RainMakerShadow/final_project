@@ -35,7 +35,7 @@
                         Ціна
                     </h6>
                     <div class="flex items-center justify-between flex-col lg:flex-row space-x-3">
-                        <div class="w-full">
+                        <div class="w-full mt-3">
                             <label for="min-experience-input"
                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 Від

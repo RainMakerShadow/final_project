@@ -89,6 +89,33 @@ class Shop extends Component
             $orderItem->quantity += 1;
             $orderItem->save();
         }
+        $this->product_id=null;
+    }
+
+    public function Add($product_id)
+    {
+
+        if (!Session::has('user_id')) {
+            $user_id = uniqid();
+            Session::put('user_id', $user_id);
+        } else {
+            $user_id = Session::get('user_id');
+        }
+        $orderItem = OrderItem::where('product_id', $product_id)->where('done', 0)->first();
+
+        if (!$orderItem) {
+            OrderItem::create([
+                'user_id' => $user_id,
+                'product_id' => $product_id,
+                'quantity' => 1,
+                'done' => false,
+                'order_id' => 0,
+            ]);
+            $this->emit("updateCounter");
+        } else {
+            $orderItem->quantity += 1;
+            $orderItem->save();
+        }
     }
 
     public function render()

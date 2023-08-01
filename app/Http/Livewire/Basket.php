@@ -128,7 +128,8 @@ class Basket extends Component
         $this->count=null;
         $this->summ=0;
 
-        if(OrderItem::destroy($id)){
+        OrderItem::destroy($id);
+
             $this->emit("updateCounterDelete");
             if(Session::get('user_id')){
                 if (OrderItem::query()->where('user_id',Session::get('user_id') )->where('done', false)->count()){
@@ -150,12 +151,13 @@ class Basket extends Component
                             }
                         }
                     }
+                    //$this->isRender=true;
 
                 }
             }
-                    $this->render();
-        }
         $this->hidden='overflow-y-auto overflow-x-auto fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full flex';
+            $this->render();
+
     }
     public function update(){
         $this->isRender=true;
